@@ -1,0 +1,41 @@
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    "primary": (
+      "base": $color,
+    ),
+  ),
+  $date-editor: (
+    "width": "100%",
+    "datetimerange-width": "100%",
+  )
+);
+
+@use "element-plus/theme-chalk/src/index.scss" as *;
+
+p {
+  margin: 0;
+}
+
+.emptyView {
+  .el-scrollbar__view {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.el-drawer {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  .el-drawer__body {
+    overflow-x: hidden;
+  }
+}
+
+.el-dialog,
+.el-message-box {
+  border-radius: 15px;
+}
+
+.el-cascader {
+  width: 100%;
+}

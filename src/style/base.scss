@@ -1,0 +1,18 @@
+$color: #0096c7;
+
+@mixin whiteContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #fff;
+  border-radius: var(--el-border-radius-base);
+  box-shadow: var(--el-box-shadow-light);
+}
+
+@mixin hoverHand {
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: $color;
+  }
+}

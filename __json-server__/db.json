@@ -1,0 +1,46 @@
+{
+  "user": {
+    "token": 123456,
+    "name": "Admin"
+  },
+  "data": [
+    {
+      "path": "/about",
+      "name": "About",
+      "meta": {
+        "name": "关于",
+        "icon": "Document",
+        "permission": [
+          "button"
+        ]
+      }
+    },
+    {
+      "path": "/test",
+      "name": "Layout",
+      "redirect": "/test/user",
+      "meta": {
+        "name": "系统管理",
+        "icon": "Setting"
+      },
+      "children": [
+        {
+          "path": "/test/user",
+          "name": "Users",
+          "meta": {
+            "name": "账号管理",
+            "icon": "User"
+          }
+        },
+        {
+          "path": "/test/menu",
+          "name": "Menu",
+          "meta": {
+            "name": "菜单管理",
+            "icon": "Menu"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<template>
+  <div class="fill">
+    <el-skeleton class="fill" :loading="loading" animated>
+      <template #template>
+        <el-skeleton-item class="fill" variant="image" />
+      </template>
+      <el-image class="fill" :src="url" :preview-src-list="srcList" hide-on-click-modal lazy>
+        <template #error>
+          <div class="image-slot">
+            <el-icon>
+              <Picture />
+            </el-icon>
+          </div>
+        </template>
+      </el-image>
+    </el-skeleton>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, watch } from 'vue'
+
+// eslint-disable-next-line no-undef
+const props = defineProps<{
+  url: string
+  srcList: any[]
+}>()
+const loading = ref(true)
+watch(
+  () => props.url,
+  () => {
+    loading.value = false
+  }
+)
+</script>
+
+<style lang="scss" scoped>
+.fill {
+  width: 100%;
+  height: 100%;
+}
+.image-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend .fill;
+  color: var(--el-text-color-secondary);
+  background-color: #f5f7fa;
+  .el-icon {
+    font-size: 40px;
+  }
+}
+</style>
