@@ -11,7 +11,7 @@
       v-bind="$attrs"
       @sort-change="sortChange"
     >
-      <template v-for="(item, index) in columns" :key="index">
+      <template v-for="(item, index) in columns" :key="item.id || index">
         <el-table-column v-bind="item">
           <template #default="scope">
             <span v-if="!item.slot">{{ scope.row[item.prop] }}</span>

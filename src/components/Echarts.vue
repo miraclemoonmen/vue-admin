@@ -1,5 +1,5 @@
 <template>
-  <div ref="container"></div>
+  <div ref="container" class="chart"></div>
 </template>
 
 <script lang="ts" setup>
@@ -13,13 +13,6 @@ import {
 } from 'vue'
 import * as echarts from 'echarts'
 
-let containerList: echarts.ECharts[] = []
-const echartsResize = (): void => {
-  containerList.forEach((element) => {
-    element.resize()
-  })
-}
-
 const container = ref()
 
 // eslint-disable-next-line no-undef
@@ -32,7 +25,7 @@ const emit = defineEmits<{(e: 'chartClick', params: any): void }>()
 
 onMounted(() => {
   const chart = echarts.init(container.value)
-  containerList.push(chart)
+  const chartResize = chart.resize as () => void
   const initChart = () => {
     chart.setOption(props.option)
   }
@@ -44,22 +37,26 @@ onMounted(() => {
     chart.resize()
     initChart()
   })
-  window.addEventListener('resize', echartsResize)
+  window.addEventListener('resize', chartResize)
   onActivated(() => {
-    echartsResize()
-    window.addEventListener('resize', echartsResize)
+    chart.resize()
+    window.addEventListener('resize', chartResize)
   })
   onDeactivated(() => {
-    window.removeEventListener('resize', echartsResize)
+    window.removeEventListener('resize', chartResize)
   })
   onUnmounted(() => {
-    window.removeEventListener('resize', echartsResize)
-    containerList.forEach((element) => {
-      setTimeout(() => {
-        element.dispose()
-      }, 200)
-    })
-    containerList = []
+    window.removeEventListener('resize', chartResize)
+    setTimeout(() => {
+      chart.dispose()
+    }, 200)
   })
 })
 </script>
+
+<style lang="scss" scoped>
+.chart {
+  width: 100%;
+  height: 100%;
+}
+</style>
