@@ -54,7 +54,8 @@ const table = ref()
 const columns = [
   {
     label: 'ID',
-    prop: 'age'
+    prop: 'age',
+    sortable: 'custom'
   },
   {
     label: '姓名',
@@ -67,7 +68,13 @@ const columns = [
   },
   {
     label: '创建时间',
-    prop: 'gmtCreate'
+    prop: 'gmtCreate',
+    sortable: 'custom'
+  },
+  {
+    label: '操作',
+    slot: 'action',
+    align: 'center'
   }
 ]
 const delData = (row: any) => {
@@ -210,6 +217,8 @@ const handleNodeClick = (data: Tree) => {
 const formData = ref()
 const isopen = ref(false)
 const changeDrawer = (type: string, value?: any) => {
+  console.log(value)
+
   switch (type) {
     case 'retrieve':
       setTimeout(() => {
