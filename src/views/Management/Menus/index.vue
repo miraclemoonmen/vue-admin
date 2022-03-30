@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="user_manage_table_content">
-        <Table ref="table" :columns="columns" row-key="id" action url="/mock/getMenu">
+        <Table ref="table" :columns="columns" row-key="id" url="/mock/getMenu">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
           </template>
@@ -70,6 +70,11 @@ const columns = [
   {
     label: '创建时间',
     prop: 'gmtCreate'
+  },
+  {
+    label: '操作',
+    slot: 'action',
+    align: 'center'
   }
 ]
 const delData = (row: any) => {

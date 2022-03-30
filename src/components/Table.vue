@@ -99,15 +99,14 @@ const search = (query?: any) => {
   })
 }
 
-onMounted(() => {
-  computeHeight()
-  window.addEventListener('resize', computeHeight)
-})
-onActivated(async () => {
+const initHeight = async () => {
   await nextTick()
   computeHeight()
   window.addEventListener('resize', computeHeight)
-})
+}
+
+onMounted(initHeight)
+onActivated(initHeight)
 onDeactivated(() => {
   window.removeEventListener('resize', computeHeight)
 })

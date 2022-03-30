@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="user_manage_table_content">
-        <Table ref="table" :columns="columns" action url="/mock/getList">
+        <Table ref="table" :columns="columns" url="/mock/getList">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
           </template>
