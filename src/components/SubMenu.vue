@@ -48,7 +48,7 @@ const onClickMenu = (name: string, url: string) => {
       margin: 5px 8px;
       border-radius: 5px;
       &:hover {
-        background-color: #f2f5f8;
+        background-color: var(--el-fill-color-light);
       }
       &.is-active {
         background-color: var(--el-color-primary-light-9);

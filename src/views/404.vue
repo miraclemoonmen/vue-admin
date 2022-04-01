@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 const router = useRouter()

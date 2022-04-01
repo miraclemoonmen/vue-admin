@@ -41,15 +41,20 @@ const removeTab = (targetName: string) => {
         border-radius: 0px;
       }
       .el-tabs__item {
-        padding: 0 30px !important;
+        padding: 0 35px !important;
+        margin-right: -18px;
         border: none;
+        -webkit-mask: url("../assets/tabBgImg.png");
+        mask: url("../assets/tabBgImg.png");
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        transition: background-color 0.4s;
+        &:hover {
+          background-color: #dee1e6;
+          color: var(--el-text-color-primary);
+        }
         &.is-active {
-          padding: 0 40px;
           background-color: var(--el-color-primary-light-9);
-          -webkit-mask: url("../assets/tabBgImg.png");
-          mask: url("../assets/tabBgImg.png");
-          -webkit-mask-size: 100% 100%;
-          mask-size: 100% 100%;
         }
       }
     }

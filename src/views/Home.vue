@@ -17,8 +17,7 @@
             range-separator="至"
             start-placeholder="起始时间"
             end-placeholder="结束时间"
-          >
-          </el-date-picker>
+          ></el-date-picker>
         </div>
         <Echarts class="home_topmidlle_line_content" :option="optionLine" />
       </div>
@@ -31,20 +30,12 @@
       <div class="home_midlle_left">
         <div class="title">指挥中心</div>
         <div class="home_midlle_left_content">
-          <Table
-            :columns="columns"
-            @check="check"
-            url="/mock/getList"
-            action
-            actionWidth="100px"
-          >
+          <Table :columns="columns" url="/mock/getList">
             <template #name="{ scope }">
               <el-tag>{{ scope.name }}</el-tag>
             </template>
             <template #action="{ scope }">
-              <el-button type="text" size="small" @click="seeIt(scope)"
-                >查看</el-button
-              >
+              <el-button type="text" size="small" @click="seeIt(scope)">查看</el-button>
               <el-button type="text" size="small">删除</el-button>
             </template>
           </Table>
@@ -71,9 +62,6 @@ import Table from '@/components/Table.vue'
 const value = ref('')
 const seeIt = (val: any) => {
   console.log(val)
-}
-const check = (row: Record<string, unknown>) => {
-  console.log(row)
 }
 const columns = [
   {
@@ -110,6 +98,12 @@ const columns = [
     prop: 'age',
     type: 'link',
     width: 160
+  },
+  {
+    label: '操作',
+    slot: 'action',
+    align: 'center',
+    fixed: 'right'
   }
 ]
 const optionLine = reactive({
