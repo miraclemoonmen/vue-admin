@@ -67,14 +67,13 @@ import { trim } from 'lodash'
 import * as Icons from '@element-plus/icons'
 import type { ElForm } from 'element-plus'
 import LabelInfo from '@/components/LabelInfo.vue'
-type FormInstance = InstanceType<typeof ElForm>;
 
 // eslint-disable-next-line no-undef
 const props = defineProps<{
   menuList: any[],
   data?: Record<string, unknown>
 }>()
-const ruleFormRef = ref<FormInstance>()
+const ruleFormRef = ref<InstanceType<typeof ElForm>>()
 const from: { [key: string]: unknown } = reactive({
   type: 'button',
   previous: [],
