@@ -1,10 +1,7 @@
 <template>
   <template v-for="(item, index) in menuList" :key="index">
-    <el-menu-item
-      :index="item.path"
-      v-if="!item?.children && item.meta?.hide !== true"
-      @click="onClickMenu(item.meta.name, item.path)"
-    >
+    <el-menu-item :index="item.path" v-if="!item?.children && item.meta?.hide !== true"
+      @click="onClickMenu(item.meta.name, item.path)">
       <el-icon>
         <component :is="item.meta?.icon" />
       </el-icon>
@@ -36,26 +33,33 @@ const onClickMenu = (name: string, url: string) => {
 }
 </script>
 
-<style lang="scss" scoped>
-.el-menu {
-  overflow: hidden;
-  height: 100%;
-  &:not(.el-menu--collapse) {
-    width: 210px;
-    .el-menu-item,
-    .el-sub-menu__title {
-      height: 50px;
-      margin: 5px 8px;
-      border-radius: 5px;
-      &:hover {
-        background-color: var(--el-fill-color-light);
+<style lang="scss">
+.el-aside {
+  .el-menu {
+    overflow: hidden;
+    height: 100%;
+
+    &:not(.el-menu--collapse) {
+      width: 210px;
+
+      .el-menu-item,
+      .el-sub-menu__title {
+        height: 50px;
+        margin: 5px 8px;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: var(--el-fill-color-light);
+        }
+
+        &.is-active {
+          background-color: var(--el-color-primary-light-9);
+        }
       }
-      &.is-active {
-        background-color: var(--el-color-primary-light-9);
+
+      .el-sub-menu .el-menu-item {
+        min-width: auto;
       }
-    }
-    .el-sub-menu .el-menu-item {
-      min-width: auto;
     }
   }
 }
