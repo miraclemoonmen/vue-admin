@@ -37,6 +37,7 @@ onMounted(() => {
   display: flex;
   width: 100%;
   height: 100%;
+  background-color: #f2f5f8;
   &_bg {
     position: relative;
     flex: 1;

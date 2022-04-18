@@ -1,10 +1,8 @@
  <template>
   <section class="layout">
-    <router-view v-slot="{ Component, route }">
+    <router-view v-slot="{ Component }">
       <transition name="route-transition" mode="out-in">
-        <keep-alive>
-          <component :is="Component" :key="route.path" />
-        </keep-alive>
+        <component :is="Component" />
       </transition>
     </router-view>
   </section>

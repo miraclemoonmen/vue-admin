@@ -2,7 +2,6 @@ import router from './index'
 import { computed } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
 import { routerList, notdefined } from './routerList'
-import { show, close } from '@/components/ElLoading'
 import store from '@/store'
 
 const jwt = computed(() => store.state.user.token)
@@ -14,7 +13,7 @@ const add404 = () => {
 
 const addRoute = async () => {
   const data = await store.dispatch('SET_MENULIST')
-  const eachAddRoute = (item: RouteRecordRaw[], parentName = '') => {
+  const eachAddRoute = (item: RouteRecordRaw[], parentName = 'LayoutViewAdmin') => {
     item.forEach(item => {
       item.component = routerList[item.name as string]
       router.addRoute(parentName, item)
@@ -31,10 +30,8 @@ router.beforeEach(async to => {
     return '/authentication'
   } else {
     if (!menuList.value.length && isAuthenticated !== false) {
-      show()
       add404()
       await addRoute()
-      close()
     }
     if (to.name == null) {
       return fullPath

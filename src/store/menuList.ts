@@ -1,7 +1,7 @@
 import { MutationTree, ActionTree } from 'vuex'
 import { RouteRecordRaw } from 'vue-router'
 import { getRouter } from '@/api'
-import { routes } from '@/router/routerList'
+import { routesMenu } from '@/router/routerList'
 
 export interface MenuList {
   data: RouteRecordRaw[]
@@ -20,7 +20,7 @@ const mutations: MutationTree<MenuList> = {
 const actions: ActionTree<MenuList, any> = {
   async SET_MENULIST ({ commit }) {
     const data = await getRouter()
-    commit('SET_MENULIST', [...routes, ...data])
+    commit('SET_MENULIST', [...routesMenu, ...data])
     return data
   }
 }
