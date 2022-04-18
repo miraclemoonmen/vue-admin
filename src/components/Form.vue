@@ -1,37 +1,19 @@
 <template>
   <el-form ref="formRef" :model="form" v-bind="$attrs" :rules="rules">
     <template v-for="(item, index) in formOptions" :key="index">
-      <el-form-item
-        v-if="!item.options && item.type !== 'editor' && item.type !== 'upload'"
-        :label="item.lable"
-        :prop="item.prop"
-        :style="item.style"
-      >
+      <el-form-item v-if="!item.options && item.type !== 'editor' && item.type !== 'upload'" :label="item.lable"
+        :prop="item.prop">
         <component :is="`el-${item.type}`" v-model="form[item.prop]" v-bind="item.attrs" />
       </el-form-item>
-      <el-form-item v-if="item.options" :label="item.lable" :prop="item.prop" :style="item.style">
+      <el-form-item v-if="item.options" :label="item.lable" :prop="item.prop">
         <component :is="`el-${item.type}`" v-model="form[item.prop]" v-bind="item.attrs">
-          <component
-            v-for="options in item.options"
-            :is="`el-${options.type}`"
-            :key="options.value"
-            :label="options.label"
-            :value="options.value"
-          ></component>
+          <component v-for="options in item.options" :is="`el-${options.type}`" :key="options.value"
+            :label="options.label" :value="options.value"></component>
         </component>
       </el-form-item>
-      <el-form-item v-if="item.type === 'upload'" :label="item.lable" :style="item.style">
-        <el-upload
-          v-bind="item.attrs"
-          :on-preview="handlePreview"
-          :before-remove="beforeRemove"
-          :on-remove="handleRemove"
-          :on-success="onSuccess"
-          :on-progress="onProgress"
-          :on-exceed="handleExceed"
-          :file-list="form[item.prop]"
-          multiple
-        >
+      <el-form-item v-if="item.type === 'upload'" :label="item.lable">
+        <el-upload v-bind="item.attrs" :before-remove="beforeRemove" :on-success="onSuccess"
+          :file-list="form[item.prop]" multiple>
           <slot name="upload"></slot>
           <template #tip>
             <slot name="tip"></slot>
@@ -40,20 +22,11 @@
       </el-form-item>
       <el-form-item v-if="item.type === 'editor'" :label="item.lable" :prop="item.prop">
         <div class="editor" v-if="fromType === 'created' ? true : initEditor.getDefaultContent">
-          <Toolbar
-            class="toolbar"
-            :editorId="initEditor.editorId"
-            :defaultConfig="initEditor.toolbarConfig"
-            :mode="initEditor.mode"
-          />
-          <Editor
-            class="content"
-            :style="item.style"
-            :editorId="initEditor.editorId"
-            :defaultConfig="initEditor.editorConfig"
-            :defaultContent="initEditor.getDefaultContent"
-            :mode="initEditor.mode"
-          />
+          <Toolbar class="toolbar" :editorId="initEditor.editorId" :defaultConfig="initEditor.toolbarConfig"
+            :mode="initEditor.mode" />
+          <Editor class="content" :style="item.style" :editorId="initEditor.editorId"
+            :defaultConfig="initEditor.editorConfig" :defaultContent="initEditor.getDefaultContent"
+            :mode="initEditor.mode" />
         </div>
         <el-skeleton v-else :rows="skeletonRows(item?.style?.height)" animated />
       </el-form-item>
@@ -73,12 +46,12 @@ import {
 import {
   Editor,
   Toolbar,
-  getEditor,
   removeEditor
 } from '@wangeditor/editor-for-vue'
 import { cloneDeep } from 'lodash'
 import '@wangeditor/editor/dist/css/style.css'
-import { ElMessageBox } from 'element-plus'
+import { beforeRemove, useOnSuccess } from '@/hooks/useUpload'
+import { initEditor, isEditor } from '@/hooks/useEditor'
 import type { ElForm } from 'element-plus'
 type FormInstance = InstanceType<typeof ElForm>;
 
@@ -88,22 +61,9 @@ const props = defineProps<{
   data?: any,
   fromType?: string
 }>()
-// eslint-disable-next-line no-undef
-const emit = defineEmits<{(e: 'handleRemove', params: any): void, (e: 'handlePreview', params: any): void, (e: 'handleExceed', params: any): void, (e: 'onSuccess', params: any): void, (e: 'onProgress', params: any): void }>()
 const formRef = ref<FormInstance>()
 const form: any = reactive({})
 const rules = reactive({})
-const initEditor: any = reactive({
-  editorId: `w-e-${Math.random().toString().slice(-5)}`,
-  toolbarConfig: {},
-  getDefaultContent: null,
-  editorConfig: { placeholder: '请输入内容...', autoFocus: false },
-  mode: 'default',
-  isEditorShow: false
-})
-const isEditor = () => {
-  return getEditor(initEditor.editorId)
-}
 const skeletonRows = (str: string) => {
   return parseInt(str.substring(0, str.length - 2)) / 100 + 5
 }
@@ -127,37 +87,8 @@ watch(() => props.data, (data) => {
   }
 })
 
-const beforeRemove = () => {
-  return ElMessageBox.confirm('确定要删除该文件吗，该操作是不可逆的。', '提示', {
-    confirmButtonText: '删除',
-    cancelButtonText: '取消',
-    type: 'error'
-  })
-}
-
-const handleRemove = (file: any, fileList: any[]) => {
-  form.upload = fileList
-  emit('handleRemove', { file, fileList })
-}
-const handlePreview = (file: any) => {
-  emit('handlePreview', file)
-}
-const handleExceed = (files: FileList, fileList: any[]) => {
-  emit('handleExceed', { files, fileList })
-}
-const onSuccess = (
-  response: never,
-  file: any,
-  fileList: any[]
-) => {
-  emit('onSuccess', { response, file, fileList })
-}
-const onProgress = (
-  event: never,
-  file: any,
-  fileList: any[]
-) => {
-  emit('onProgress', { event, file, fileList })
+const onSuccess = (response: any, file: any) => {
+  useOnSuccess(file, response)
 }
 
 const submitForm = (
@@ -179,9 +110,7 @@ const submitForm = (
 const resetForm = () => {
   const editor = isEditor()
   if (!formRef.value) return
-  if (form.upload) {
-    form.upload = []
-  }
+  form.upload && (form.upload = [])
   editor && editor.clear()
   formRef.value.resetFields()
 }
@@ -206,12 +135,15 @@ onMounted(() => {
 .editor {
   width: 100%;
   border: 1px solid #ccc;
+
   .toolbar {
     border-bottom: 1px solid #ccc;
   }
+
   .content {
     overflow-y: hidden;
   }
+
   &.w-e-full-screen-container {
     z-index: 1;
   }

@@ -103,6 +103,7 @@ const columns = [
     label: '操作',
     slot: 'action',
     align: 'center',
+    width: 100,
     fixed: 'right'
   }
 ]

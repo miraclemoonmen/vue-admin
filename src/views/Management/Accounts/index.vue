@@ -110,6 +110,9 @@ const formSearch = reactive([
     lable: '状态',
     prop: 'region',
     value: '',
+    attrs: {
+      clearable: true
+    },
     options: [
       {
         value: 'Option1',
@@ -277,24 +280,29 @@ const handleClose = (done: () => void) => {
 .user_manage {
   display: flex;
   height: 100%;
+
   &_tree {
     padding: 10px;
     @include whiteContent;
     flex: 0 0 13%;
     text-align: center;
   }
+
   &_table {
     overflow: hidden;
     margin-left: 20px;
     padding: 10px;
     @include whiteContent;
     flex-direction: column;
+
     &_header {
       padding: 10px 0px;
     }
+
     &_action {
       margin-left: 15px;
     }
+
     &_content {
       flex: 1;
       overflow: hidden;

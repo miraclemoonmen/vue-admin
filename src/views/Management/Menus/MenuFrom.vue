@@ -64,7 +64,7 @@
 <script lang="ts" setup>
 import { ref, reactive, watch, computed } from 'vue'
 import { trim } from 'lodash'
-import * as Icons from '@element-plus/icons'
+import * as Icons from '@element-plus/icons-vue'
 import type { ElForm } from 'element-plus'
 import LabelInfo from '@/components/LabelInfo.vue'
 

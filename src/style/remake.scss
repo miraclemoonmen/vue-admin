@@ -39,3 +39,12 @@ p {
 .el-cascader {
   width: 100%;
 }
+
+.el-form--inline {
+  .el-form-item {
+    width: 315px;
+  }
+  .el-select {
+    width: 100%;
+  }
+}
