@@ -36,7 +36,7 @@ const onClickMenu = (name: string, url: string) => {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .el-menu {
   overflow: hidden;
   height: 100%;
