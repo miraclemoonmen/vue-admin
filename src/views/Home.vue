@@ -11,13 +11,6 @@
       <div class="home_topmidlle_line">
         <div class="title">
           <p>统计数据</p>
-          <el-date-picker
-            v-model="value"
-            type="daterange"
-            range-separator="至"
-            start-placeholder="起始时间"
-            end-placeholder="结束时间"
-          ></el-date-picker>
         </div>
         <Echarts class="home_topmidlle_line_content" :option="optionLine" />
       </div>
@@ -56,10 +49,9 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import Echarts from '@/components/Echarts.vue'
 import Table from '@/components/Table.vue'
-const value = ref('')
 const seeIt = (val: any) => {
   console.log(val)
 }
@@ -243,6 +235,7 @@ optionLine.dataset.source = [
   &_top {
     display: flex;
     justify-content: space-between;
+
     &_item_num {
       @include whiteContent;
       flex: 0 0 384px;
@@ -252,53 +245,64 @@ optionLine.dataset.source = [
       height: 168px;
       color: #999999;
       font-size: 12px;
+
       &_middle {
         font-size: 28px;
         color: #191919;
       }
     }
   }
+
   &_topmidlle {
     display: flex;
     width: 100%;
     height: 405px;
     margin-top: 18px;
+
     &_line {
       box-sizing: border-box;
       @include whiteContent;
       margin-right: 40px;
+
       &_content {
         flex: 1;
       }
     }
+
     &_pie {
       @include whiteContent;
       flex: 0 0 384px;
+
       &_content {
         flex: 1;
       }
     }
   }
+
   &_midlle {
     display: flex;
     margin-top: 20px;
     width: 100%;
     height: 465px;
+
     &_left {
       @include whiteContent;
       margin-right: 20px;
       padding-bottom: 20px;
       overflow: hidden;
+
       &_content {
         flex: 1;
         padding: 20px 40px 0px 40px;
         overflow: hidden;
       }
     }
+
     &_right {
       @include whiteContent;
       padding-bottom: 20px;
       overflow: hidden;
+
       &_content {
         flex: 1;
         padding: 20px 40px 0px 40px;
@@ -306,6 +310,7 @@ optionLine.dataset.source = [
       }
     }
   }
+
   .title {
     display: flex;
     justify-content: space-between;
