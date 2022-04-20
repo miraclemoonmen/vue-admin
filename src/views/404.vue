@@ -16,8 +16,8 @@ const goHome = async () => {
     <div class="errPage_content">
       <div class="errPage_content_image"></div>
       <div class="errPage_content_text">
-        <h1>你怎么到这来的？</h1>
-        <p>抱歉，我们找不到你要找的网页。</p>
+        <h1>你怎么到这来的</h1>
+        <p>抱歉，我们找不到你要找的网页</p>
       </div>
       <el-button @click="goHome" class="errPage_content_button">带我回去</el-button>
     </div>
@@ -33,6 +33,7 @@ const goHome = async () => {
   align-items: center;
   &_content {
     @include whiteContent;
+    box-shadow: none;
     height: 90%;
     justify-content: space-between;
     box-sizing: border-box;
