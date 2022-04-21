@@ -8,7 +8,7 @@
     </p>
     <h2 class="register_content_title">Register</h2>
     <div class="register_content_input">
-      <Form :formOptions="formOptions" ref="form" size="large" status-icon />
+      <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
       <el-button @click="getRegister" :loading="loading" class="register_content_input_button">注 册</el-button>
     </div>
     <div class="register_content_about"></div>
@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
 import { useToast } from 'vue-toastification'
-import Form from '@/components/Form.vue'
+import formComponent from '@/components/form-component.vue'
 
 const toast = useToast()
 

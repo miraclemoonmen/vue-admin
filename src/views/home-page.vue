@@ -12,18 +12,18 @@
         <div class="title">
           <p>统计数据</p>
         </div>
-        <Echarts class="home_topmidlle_line_content" :option="optionLine" />
+        <echarts-component class="home_topmidlle_line_content" :option="optionLine" />
       </div>
       <div class="home_topmidlle_pie">
         <div class="title">处置调度</div>
-        <Echarts class="home_topmidlle_pie_content" :option="optionPie" />
+        <echarts-component class="home_topmidlle_pie_content" :option="optionPie" />
       </div>
     </div>
     <div class="home_midlle">
       <div class="home_midlle_left">
         <div class="title">指挥中心</div>
         <div class="home_midlle_left_content">
-          <Table :columns="columns" url="/mock/getList">
+          <table-component :columns="columns" url="/mock/getList">
             <template #name="{ scope }">
               <el-tag>{{ scope.name }}</el-tag>
             </template>
@@ -31,17 +31,17 @@
               <el-button type="text" size="small" @click="seeIt(scope)">查看</el-button>
               <el-button type="text" size="small">删除</el-button>
             </template>
-          </Table>
+          </table-component>
         </div>
       </div>
       <div class="home_midlle_right">
         <div class="title">指挥中心</div>
         <div class="home_midlle_right_content">
-          <Table :columns="[]" url="/mock/getLis">
+          <table-component :columns="[]" url="/mock/getLis">
             <template #name="{ scope }">
               <el-button type="text">{{ scope.name }}</el-button>
             </template>
-          </Table>
+          </table-component>
         </div>
       </div>
     </div>
@@ -50,8 +50,8 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import Echarts from '@/components/Echarts.vue'
-import Table from '@/components/Table.vue'
+import echartsComponent from '@/components/echarts-component.vue'
+import tableComponent from '@/components/table-component.vue'
 const seeIt = (val: any) => {
   console.log(val)
 }

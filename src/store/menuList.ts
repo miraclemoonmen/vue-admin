@@ -1,7 +1,7 @@
 import { MutationTree, ActionTree } from 'vuex'
 import { RouteRecordRaw } from 'vue-router'
 import { getRouter } from '@/api'
-import { routesMenu } from '@/router/routerList'
+import { routesMenu } from '@/router/list'
 
 export interface MenuList {
   data: RouteRecordRaw[]

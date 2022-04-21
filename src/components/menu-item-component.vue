@@ -16,7 +16,7 @@
         </el-icon>
         <span>{{ item.meta.name }}</span>
       </template>
-      <SubMenu :menuList="item?.children" />
+      <menu-item-component :menuList="item?.children" />
     </el-sub-menu>
   </template>
 </template>

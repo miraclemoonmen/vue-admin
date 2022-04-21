@@ -1,9 +1,9 @@
 <template>
-  <Echarts class="map" :option="option" @chartClick="chartClick" />
+  <echarts-component class="map" :option="option" @chartClick="chartClick" />
 </template>
 <script lang="ts">
 import * as echarts from 'echarts'
-import Echarts from '@/components/Echarts.vue'
+import echartsComponent from '@/components/echarts-component.vue'
 import { getMap } from '@/api/index'
 import { defineComponent, reactive } from 'vue'
 
@@ -172,7 +172,7 @@ export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Map',
   components: {
-    Echarts
+    echartsComponent
   },
   async setup () {
     const { option, map } = await initMap()

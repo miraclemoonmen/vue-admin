@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { show } from '@/components/ElLoading'
+import { show } from '@/components/elLoading-component'
 import { ElMessageBox } from 'element-plus'
 const store = useStore()
 const router = useRouter()

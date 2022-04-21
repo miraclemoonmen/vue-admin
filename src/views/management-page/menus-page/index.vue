@@ -6,7 +6,7 @@
     </div>
     <div class="user_manage_table">
       <div class="user_manage_table_header">
-        <Form inline :formOptions="formSearch" ref="form" label-width="auto" />
+        <form-component inline :formOptions="formSearch" ref="form" label-width="auto" />
         <div class="user_manage_table_action">
           <el-button type="primary" icon="Search" @click="search">搜索</el-button>
           <el-button icon="Refresh" @click="restFrom">重置</el-button>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="user_manage_table_content">
-        <Table ref="table" :columns="columns" url="/mock/getList">
+        <table-component ref="table" :columns="columns" row-key="id" url="/mock/getMenu">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
           </template>
@@ -24,11 +24,11 @@
               <el-button type="danger" icon="Delete" circle @click="delData(scope)" />
             </el-button-group>
           </template>
-        </Table>
+        </table-component>
       </div>
     </div>
     <el-drawer size="20%" :before-close="handleClose" v-model="isopen" destroy-on-close>
-      <Form :formOptions="formOptions" label-position="top" :data="formData" />
+      <menus-page-from-component :menuList="options" :data="formOptions" ref="menuFrom" />
       <template #footer>
         <el-button @click="isopen = false">取消</el-button>
         <el-button type="primary" @click="submitForm">提交</el-button>
@@ -39,11 +39,13 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import Table from '@/components/Table.vue'
-import Form from '@/components/Form.vue'
+import tableComponent from '@/components/table-component.vue'
+import formComponent from '@/components/form-component.vue'
+import menusPageFromComponent from './menus-page-from-component.vue'
 import { useToast } from 'vue-toastification'
 import { getTree } from '@/api'
 import { ElMessageBox } from 'element-plus'
+
 interface Tree {
   label: string
   children?: Tree[]
@@ -54,8 +56,7 @@ const table = ref()
 const columns = [
   {
     label: 'ID',
-    prop: 'age',
-    sortable: 'custom'
+    prop: 'id'
   },
   {
     label: '姓名',
@@ -68,8 +69,7 @@ const columns = [
   },
   {
     label: '创建时间',
-    prop: 'gmtCreate',
-    sortable: 'custom'
+    prop: 'gmtCreate'
   },
   {
     label: '操作',
@@ -110,9 +110,6 @@ const formSearch = reactive([
     lable: '状态',
     prop: 'region',
     value: '',
-    attrs: {
-      clearable: true
-    },
     options: [
       {
         value: 'Option1',
@@ -146,65 +143,18 @@ const restFrom = () => {
   form.value && form.value.resetForm()
 }
 
+const menuFrom = ref()
+const formOptions = ref()
 const options: any = ref([])
-const formOptions = reactive([
-  {
-    type: 'input',
-    lable: '姓名',
-    prop: 'name',
-    value: ''
-  },
-  {
-    type: 'input',
-    lable: '密码',
-    prop: 'age',
-    value: '',
-    attrs: {
-      type: 'password',
-      'show-password': true
-    }
-  },
-  {
-    type: 'switch',
-    lable: '状态',
-    prop: 'state',
-    value: true
-  },
-  {
-    type: 'date-picker',
-    lable: '创建时间',
-    prop: 'gmtCreate',
-    value: [],
-    attrs: {
-      type: 'datetime'
-    }
-  },
-  {
-    type: 'cascader',
-    lable: '菜单权限',
-    prop: 'cascader',
-    value: null,
-    attrs: {
-      options,
-      props: {
-        multiple: true,
-        emitPath: false
-      }
-    }
-  }
-])
 const submitForm = () => {
-  form.value.submitForm(
-    (val: Record<string, never>) => {
-      console.log(val)
+  if (menuFrom.value) {
+    menuFrom.value.submitForm((from: any) => {
+      console.log(from)
       toast.success('提交成功')
       isopen.value = false
       search()
-    },
-    () => {
-      console.log('失败')
-    }
-  )
+    })
+  }
 }
 
 const dataTree = ref([])
@@ -217,15 +167,20 @@ const handleNodeClick = (data: Tree) => {
   console.log(data)
 }
 
-const formData = ref()
 const isopen = ref(false)
 const changeDrawer = (type: string, value?: any) => {
   console.log(value)
-
   switch (type) {
     case 'retrieve':
       setTimeout(() => {
-        formData.value = value
+        formOptions.value = {
+          type: 'menu',
+          previous: ['首页1'],
+          path: 'test',
+          name: 'test',
+          buttonName: '',
+          state: true
+        }
       })
       break
     default:
@@ -254,7 +209,6 @@ const changeDrawer = (type: string, value?: any) => {
       }
     ]
   })
-  formData.value = []
   isopen.value = true
 }
 const handleClose = (done: () => void) => {
@@ -280,29 +234,24 @@ const handleClose = (done: () => void) => {
 .user_manage {
   display: flex;
   height: 100%;
-
   &_tree {
     padding: 10px;
     @include whiteContent;
     flex: 0 0 13%;
     text-align: center;
   }
-
   &_table {
     overflow: hidden;
     margin-left: 20px;
     padding: 10px;
     @include whiteContent;
     flex-direction: column;
-
     &_header {
       padding: 10px 0px;
     }
-
     &_action {
       margin-left: 15px;
     }
-
     &_content {
       flex: 1;
       overflow: hidden;

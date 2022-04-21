@@ -2,7 +2,7 @@
   <div>
     <h2 class="login_content_title">Welcome 👋🏻</h2>
     <div class="login_content_input">
-      <Form :formOptions="formOptions" ref="form" size="large" status-icon />
+      <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
       <el-button @click="getLogin" :loading="loading" class="login_content_input_button">登 录</el-button>
     </div>
     <div class="login_content_about">
@@ -26,7 +26,7 @@ import { ref, reactive, computed } from 'vue'
 import { useStore } from 'vuex'
 import { GlobalDataProps } from '@/store'
 import { useRouter } from 'vue-router'
-import Form from '@/components/Form.vue'
+import formComponent from '@/components/form-component.vue'
 const store = useStore<GlobalDataProps>()
 // eslint-disable-next-line no-undef
 const emit = defineEmits<{(e: 'changeComponent'): void }>()

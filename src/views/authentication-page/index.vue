@@ -14,11 +14,11 @@
 <script lang="ts" setup>
 import { ref, defineAsyncComponent, markRaw, onMounted } from 'vue'
 import lottie from 'lottie-web'
-import Signin from './Signin.vue'
-const Register = defineAsyncComponent(() => import('./Register.vue'))
-const isComponent: any = ref(markRaw(Signin))
+import signinPage from './signin-page.vue'
+const registerPage = defineAsyncComponent(() => import('./register-page.vue'))
+const isComponent: any = ref(markRaw(signinPage))
 const changeComponent = () => {
-  isComponent.value = isComponent.value === Signin ? markRaw(Register) : markRaw(Signin)
+  isComponent.value = isComponent.value === signinPage ? markRaw(registerPage) : markRaw(signinPage)
 }
 onMounted(() => {
   const box = document.querySelector('.authentication_bg_cube') as HTMLElement

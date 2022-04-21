@@ -8,10 +8,10 @@
       <Map />
     </suspense>
     <el-dialog v-model="dialogVisible" title="Tips" width="30%" @open="open">
-      <Echarts class="bar" :option="option" />
+      <echarts-component class="bar" :option="option" />
     </el-dialog>
     <el-drawer size="35%" v-model="drawer" title="I am the title" destroy-on-close>
-      <Form
+      <form-component
         :formOptions="formOptions"
         :data="tmpObject"
         :fromType="fromType"
@@ -24,7 +24,7 @@
         <template #tip>
           <p>jpg/png files with a size less than 500kb</p>
         </template>
-      </Form>
+      </form-component>
       <template #footer>
         <el-button>cancel</el-button>
         <el-button type="primary" @click="submitForm">confirm</el-button>
@@ -37,8 +37,8 @@
 import { ref, reactive, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import Map from '@/components/Map.vue'
-import Form from '@/components/Form.vue'
-import Echarts from '@/components/Echarts.vue'
+import formComponent from '@/components/form-component.vue'
+import echartsComponent from '@/components/echarts-component.vue'
 import dayjs from 'dayjs'
 const {
   meta: { permission }

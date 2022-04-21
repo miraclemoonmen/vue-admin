@@ -1,7 +1,7 @@
 <template>
   <el-menu :default-active="defaultPath" router>
     <li class="logo"></li>
-    <SubMenu :menuList="menuList" />
+    <menu-item-component :menuList="menuList" />
   </el-menu>
 </template>
 
@@ -10,7 +10,7 @@ import { GlobalDataProps } from '@/store'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import SubMenu from './SubMenu.vue'
+import menuItemComponent from './menu-item-component.vue'
 
 const route = useRoute()
 const store = useStore<GlobalDataProps>()

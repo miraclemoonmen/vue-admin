@@ -1,7 +1,7 @@
 import router from './index'
 import { computed } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
-import { routerList, notdefined } from './routerList'
+import { routerList, notdefined } from './list'
 import store from '@/store'
 
 const jwt = computed(() => store.state.user.token)

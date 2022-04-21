@@ -1,15 +1,15 @@
  <template>
   <el-container>
     <el-aside>
-      <Menu />
+      <menu-component />
     </el-aside>
     <el-container>
       <el-header>
         <div class="header_top">
           <div></div>
-          <Avatar />
+          <avatar-component />
         </div>
-        <Tabs />
+        <views-tabs-component />
       </el-header>
       <el-main>
         <router-view v-slot="{ Component }">
@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts" setup>
-import Menu from '@/components/Menu.vue'
-import Tabs from '@/components/Tabs.vue'
+import menuComponent from '@/components/menu-component.vue'
+import viewsTabsComponent from '@/components/views-tabs-component.vue'
 // import Breadcrumb from "@/components/Breadcrumb.vue";
-import Avatar from '@/components/Avatar.vue'
+import avatarComponent from '@/components/avatar-component.vue'
 </script>
 
 <style lang="scss" scoped>

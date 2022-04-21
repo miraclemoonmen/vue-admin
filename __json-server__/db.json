@@ -6,7 +6,7 @@
   "data": [
     {
       "path": "/about",
-      "name": "About",
+      "name": "AboutPage",
       "meta": {
         "name": "关于",
         "icon": "Document",
@@ -17,7 +17,7 @@
     },
     {
       "path": "/test",
-      "name": "Layout",
+      "name": "LayoutPage",
       "redirect": "/test/user",
       "meta": {
         "name": "系统管理",
@@ -26,7 +26,7 @@
       "children": [
         {
           "path": "/test/user",
-          "name": "Users",
+          "name": "AccountsPage",
           "meta": {
             "name": "账号管理",
             "icon": "User"
@@ -34,7 +34,7 @@
         },
         {
           "path": "/test/menu",
-          "name": "Menu",
+          "name": "MenuPage",
           "meta": {
             "name": "菜单管理",
             "icon": "Menu"

@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import menuList, { MenuList } from './menuList'
 import user, { User } from './user'
-import tabs, { Tabs } from './tabs'
+import tabs, { Tabs } from './viewsTabs'
 
 export interface GlobalDataProps {
   user: User,
