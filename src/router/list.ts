@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-import HomePage from '@/views/home-page.vue'
+import HomePage from '@/views/home-page/index.vue'
 import LayoutViewAdmin from '@/views/admin-layout-page.vue'
 import LayoutPage from '@/views/layout-page.vue'
 
@@ -32,7 +32,7 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/authentication',
-    name: 'authentication-page',
+    name: 'authentication',
     component: () => import(/* webpackChunkName: "authentication-page" */ '@/views/authentication-page/index.vue'),
     meta: {
       isAuthenticated: false

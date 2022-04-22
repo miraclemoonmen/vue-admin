@@ -28,7 +28,7 @@
       </div>
     </div>
     <el-drawer size="20%" :before-close="handleClose" v-model="isopen" destroy-on-close>
-      <Form :formOptions="formOptions" label-position="top" :data="formData" />
+      <form-component :formOptions="formOptions" label-position="top" :data="formData" />
       <template #footer>
         <el-button @click="isopen = false">取消</el-button>
         <el-button type="primary" @click="submitForm">提交</el-button>

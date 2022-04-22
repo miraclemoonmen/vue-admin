@@ -20,10 +20,10 @@ import { ref, reactive } from 'vue'
 import { useToast } from 'vue-toastification'
 import formComponent from '@/components/form-component.vue'
 
-const toast = useToast()
-
 // eslint-disable-next-line no-undef
 const emit = defineEmits<{(e: 'changeComponent'): void }>()
+const toast = useToast()
+
 const changeComponent = () => {
   emit('changeComponent')
 }

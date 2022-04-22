@@ -12,11 +12,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, defineAsyncComponent, markRaw, onMounted } from 'vue'
+import { ref, markRaw, onMounted } from 'vue'
 import lottie from 'lottie-web'
 import signinPage from './signin-page.vue'
-const registerPage = defineAsyncComponent(() => import('./register-page.vue'))
-const isComponent: any = ref(markRaw(signinPage))
+import registerPage from './register-page.vue'
+const isComponent = ref(markRaw(signinPage))
 const changeComponent = () => {
   isComponent.value = isComponent.value === signinPage ? markRaw(registerPage) : markRaw(signinPage)
 }
