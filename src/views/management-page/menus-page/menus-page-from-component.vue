@@ -8,13 +8,12 @@
     </el-form-item>
     <el-form-item label="父级" prop="previous">
       <el-cascader
-        v-model="from.previous"
-        :options="props.menuList"
-        :props="{
-          mitPath: false,
-          checkStrictly: !isButton
-        }"
-      />
+      v-model="from.previous"
+      :options="props.menuList"
+      :props="{
+        mitPath: false,
+        checkStrictly: !isButton
+      }" />
     </el-form-item>
     <template v-if="!isButton">
       <el-form-item prop="path">
@@ -25,7 +24,7 @@
       </el-form-item>
       <el-form-item prop="name">
         <template #label>
-          <LabelInfo lable="组件名称" content="请遵循大骆驼拼写法" />
+          <LabelInfo lable="组件名称" content="请遵循 Vue Router 文档规范" />
         </template>
         <el-input v-model="from.name" />
       </el-form-item>
@@ -36,11 +35,7 @@
           </template>
           <template #default>
             <div class="popover_default">
-              <el-icon
-                v-for="(item, index) in Object.keys(Icons)"
-                :key="index"
-                @click="changeIcon(item)"
-              >
+              <el-icon v-for="(item, index) in Object.keys(Icons)" :key="index" @click="changeIcon(item)">
                 <component :is="item"></component>
               </el-icon>
             </div>
@@ -58,6 +53,9 @@
       <el-form-item label="按钮标识" prop="buttonName">
         <el-input v-model="from.buttonName" />
       </el-form-item>
+      <el-form-item label="goodDog">
+        <image-component :src="src" :src-list="[src]" />
+      </el-form-item>
     </template>
   </el-form>
 </template>
@@ -66,7 +64,9 @@ import { ref, reactive, watch, computed } from 'vue'
 import { trim } from 'lodash'
 import * as Icons from '@element-plus/icons-vue'
 import type { ElForm } from 'element-plus'
+import { getShibes } from '@/api/index'
 import LabelInfo from '@/components/LabelInfo.vue'
+import imageComponent from '@/components/image-component.vue'
 
 // eslint-disable-next-line no-undef
 const props = defineProps<{
@@ -82,6 +82,10 @@ const from: { [key: string]: unknown } = reactive({
   buttonName: '',
   icon: '',
   state: true
+})
+const src = ref()
+getShibes().then(res => {
+  src.value = res
 })
 
 watch(() => props.data, data => {
@@ -153,17 +157,21 @@ defineExpose({
 .icon_button {
   width: 42px;
 }
+
 .popover_default {
   height: 200px;
   overflow: auto;
+
   .el-icon {
     margin: 5px;
     font-size: 25px;
     transition: color 0.2s;
+
     &:hover {
       cursor: pointer;
       color: $color;
     }
+
     .svg {
       z-index: 2;
     }

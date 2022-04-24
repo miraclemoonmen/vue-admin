@@ -4,7 +4,7 @@
       <template #template>
         <el-skeleton-item class="fill" variant="image" />
       </template>
-      <el-image class="fill" :src="url" :preview-src-list="srcList" hide-on-click-modal lazy>
+      <el-image class="fill" :src="src" :preview-src-list="srcList" hide-on-click-modal lazy>
         <template #error>
           <div class="image-slot">
             <el-icon>
@@ -22,12 +22,12 @@ import { ref, watch } from 'vue'
 
 // eslint-disable-next-line no-undef
 const props = defineProps<{
-  url: string
-  srcList: any[]
+  src: string
+  srcList?: any[]
 }>()
 const loading = ref(true)
 watch(
-  () => props.url,
+  () => props.src,
   () => {
     loading.value = false
   }
