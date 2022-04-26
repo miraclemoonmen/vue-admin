@@ -8,7 +8,7 @@ export const optionLine = reactive({
     bottom: '5%'
   },
   dimensions: ['day', 'ThisMonth', 'prevMonth'],
-  color: ['#0052d9', '#0594fa'],
+  color: ['rgb(126,87,194)', 'rgb(30,136,229)'],
   dataset: {
     source: [
       {
@@ -55,8 +55,8 @@ export const optionLine = reactive({
   xAxis: [{ type: 'category', boundaryGap: false }],
   yAxis: [{}],
   series: [
-    { name: '本月', type: 'line', areaStyle: { color: '#e5edfb' } },
-    { name: '上月', type: 'line', areaStyle: { color: '#e5edfb' } }
+    { name: '本月', type: 'line' },
+    { name: '上月', type: 'line' }
   ]
 })
 

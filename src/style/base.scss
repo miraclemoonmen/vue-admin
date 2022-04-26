@@ -1,9 +1,8 @@
-$color: #007fff;
+$color: #1972D6;
 
 @mixin whiteContent {
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: rgb(47 60 74 / 1%) 0px 8px 32px, rgb(47 60 74 / 2%) 0px 8px 16px;
 }
 
 @mixin hoverHand {

@@ -12,7 +12,7 @@ const menuList = computed(() => store.state.menuList.data)
 </script>
 
 <template>
-  <el-menu :default-active="defaultPath" router background-color="#1d2228" text-color="#fff">
+  <el-menu :default-active="defaultPath" router>
     <li class="logo"></li>
     <menu-item-component :menuList="menuList" />
   </el-menu>

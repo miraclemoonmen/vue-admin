@@ -40,8 +40,11 @@ getTableData2()
               <el-tag>{{ scope.name }}</el-tag>
             </template>
             <template #action>
-              <el-button type="text" size="small">查看</el-button>
-              <el-button type="text" size="small">删除</el-button>
+              <el-button-group>
+                <el-button icon="View" circle />
+                <el-button icon="Edit" circle />
+                <el-button type="danger" icon="Delete" circle />
+              </el-button-group>
             </template>
           </table-component>
         </div>
@@ -78,18 +81,87 @@ getTableData2()
       display: flex;
       flex-direction: column;
       flex: 1;
+      overflow: hidden;
+      position: relative;
       @include whiteContent;
       flex: 0 0 384px;
       justify-content: inherit;
       box-sizing: border-box;
       padding: 34px;
       height: 168px;
-      color: #999999;
+      color: #fff;
       font-size: 12px;
 
       &_middle {
         font-size: 28px;
-        color: #191919;
+        color: #fff;
+      }
+    }
+
+    &_item_num:nth-child(1) {
+      color: #b39ddb;
+      background-color: #5e35b1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        background: rgb(69, 39, 160);
+        border-radius: 50%;
+        top: -85px;
+        right: -95px;
+      }
+    }
+
+    &_item_num:nth-child(2) {
+      color: #90caf9;
+      background-color: #1e88e5;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        background: rgb(21, 101, 192);
+        border-radius: 50%;
+        z-index: 1;
+        top: -85px;
+        right: -95px;
+      }
+    }
+
+    &_item_num:nth-child(3) {
+      color: #f2d1c6;
+      background-color: #d84315;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        background: #bf4138;
+        border-radius: 50%;
+        z-index: 1;
+        top: -85px;
+        right: -95px;
+      }
+    }
+
+    &_item_num:nth-child(4) {
+      color: #c6ebd5;
+      background-color: #00C853;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        background: #1ab85c;
+        border-radius: 50%;
+        z-index: 1;
+        top: -85px;
+        right: -95px;
       }
     }
   }
