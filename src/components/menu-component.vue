@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="defaultPath" router>
+  <el-menu :default-active="defaultPath" router background-color="#111827" text-color="#fff">
     <li class="logo"></li>
     <menu-item-component :menuList="menuList" />
   </el-menu>
@@ -22,6 +22,7 @@ const menuList = computed(() => store.state.menuList.data)
 .logo {
   height: 64px;
 }
+
 .el-menu {
   border: none;
 }

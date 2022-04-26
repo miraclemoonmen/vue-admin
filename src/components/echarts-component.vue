@@ -7,20 +7,16 @@ import {
   ref,
   watch,
   onMounted,
-  onUnmounted,
-  onDeactivated,
-  onActivated
+  onBeforeUnmount
 } from 'vue'
 import * as echarts from 'echarts'
 
 const container = ref()
 
-// eslint-disable-next-line no-undef
 const props = defineProps<{
   option: any
 }>()
 
-// eslint-disable-next-line no-undef
 const emit = defineEmits<{(e: 'chartClick', params: any): void }>()
 
 onMounted(() => {
@@ -38,14 +34,7 @@ onMounted(() => {
     initChart()
   })
   window.addEventListener('resize', chartResize)
-  onActivated(() => {
-    chart.resize()
-    window.addEventListener('resize', chartResize)
-  })
-  onDeactivated(() => {
-    window.removeEventListener('resize', chartResize)
-  })
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     window.removeEventListener('resize', chartResize)
     setTimeout(() => {
       chart.dispose()

@@ -39,8 +39,6 @@ import avatarComponent from '@/components/avatar-component.vue'
 .el-aside {
   z-index: 2;
   width: auto;
-  box-shadow: 0 2px 10px -1px rgba(85, 85, 85, 0.08),
-    0 1px 10px 0 rgba(85, 85, 85, 0.06), 0 1px 30px 0 rgba(85, 85, 85, 0.03);
 }
 
 .el-header {
@@ -48,8 +46,6 @@ import avatarComponent from '@/components/avatar-component.vue'
   padding: 0px;
   height: auto;
   background-color: #fff;
-  box-shadow: 0 2px 30px -1px rgb(85 85 85 / 8%),
-    0 4px 30px 0 rgb(85 85 85 / 6%), 0 1px 30px 0 rgb(85 85 85 / 3%);
 
   .header_top {
     display: flex;
@@ -78,6 +74,6 @@ import avatarComponent from '@/components/avatar-component.vue'
 }
 
 .el-main {
-  background-color: #f2f5f8;
+  background-color: #f5f8fa;
 }
 </style>

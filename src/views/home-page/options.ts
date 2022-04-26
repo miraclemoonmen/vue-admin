@@ -91,7 +91,7 @@ export const optionPie = reactive({
   ]
 })
 
-export const columns = [
+export const columns1 = [
   {
     label: '姓名',
     prop: 'name',
@@ -135,3 +135,55 @@ export const columns = [
     fixed: 'right'
   }
 ]
+
+export const columns2 = [
+  {
+    label: '姓名',
+    prop: 'name',
+    width: 160,
+    slot: 'name'
+  },
+  {
+    label: '年龄',
+    prop: 'age',
+    type: 'link',
+    width: 160,
+    edit: true
+  },
+  {
+    label: '姓名',
+    prop: 'name',
+    width: 160
+  },
+  {
+    label: '年龄',
+    prop: 'age',
+    type: 'link',
+    width: 160
+  },
+  {
+    label: '姓名',
+    prop: 'name',
+    width: 160
+  },
+  {
+    label: '年龄',
+    prop: 'age',
+    type: 'link',
+    width: 160
+  }
+]
+
+export const paginationAndSortOptions1 = reactive({
+  currentPage: 1,
+  pageSize: 10,
+  prop: '',
+  order: ''
+})
+
+export const paginationAndSortOptions2 = reactive({
+  currentPage: 1,
+  pageSize: 10,
+  prop: '',
+  order: ''
+})

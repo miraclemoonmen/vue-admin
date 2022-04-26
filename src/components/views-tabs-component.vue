@@ -50,7 +50,7 @@ const removeTab = (targetName: string) => {
         mask-size: 100% 100%;
         transition: background-color 0.4s;
         &:hover {
-          background-color: #dee1e6;
+          background-color: var(--el-fill-color-light);
           color: var(--el-text-color-primary);
         }
         &.is-active {

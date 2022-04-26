@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-// eslint-disable-next-line no-undef
+
 defineProps<{
   lable: string,
   content: string

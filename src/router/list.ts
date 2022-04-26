@@ -7,8 +7,7 @@ import LayoutPage from '@/views/layout-page.vue'
 export const routerList: any = {
   LayoutPage,
   AboutPage: () => import(/* webpackChunkName: "about-page" */ '@/views/about-page.vue'),
-  AccountsPage: () => import(/* webpackChunkName: "accounts-page/" */ '@/views/management-page/accounts-page/index.vue'),
-  MenuPage: () => import(/* webpackChunkName: "menus-page" */ '@/views/management-page/menus-page/index.vue')
+  AccountsPage: () => import(/* webpackChunkName: "accounts-page/" */ '@/views/management-page/accounts-page/index.vue')
 }
 
 export const routesMenu: Array<RouteRecordRaw> = [

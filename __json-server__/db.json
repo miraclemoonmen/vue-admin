@@ -31,14 +31,6 @@
             "name": "账号管理",
             "icon": "User"
           }
-        },
-        {
-          "path": "/test/menu",
-          "name": "MenuPage",
-          "meta": {
-            "name": "菜单管理",
-            "icon": "Menu"
-          }
         }
       ]
     }

@@ -23,7 +23,7 @@
 
 <script lang="ts" setup>
 import { useStore } from 'vuex'
-// eslint-disable-next-line no-undef
+
 defineProps<{
   menuList: any[]
 }>()
@@ -49,11 +49,11 @@ const onClickMenu = (name: string, url: string) => {
         border-radius: 5px;
 
         &:hover {
-          background-color: var(--el-fill-color-light);
+          background-color: rgb(36,42,56);
         }
 
         &.is-active {
-          background-color: var(--el-color-primary-light-9);
+          background-color: rgb(21, 54, 88);
         }
       }
 

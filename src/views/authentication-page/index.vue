@@ -1,16 +1,3 @@
-<template>
-  <div class="authentication">
-    <div class="authentication_bg">
-      <img src="@/assets/auth-mask-bg.png" class="authentication_bg_mask" />
-      <div class="authentication_bg_cube"></div>
-    </div>
-    <div class="authentication_content">
-      <transition name="route-transition" mode="out-in">
-        <component :is="isComponent" @changeComponent="changeComponent"></component>
-      </transition>
-    </div>
-  </div>
-</template>
 <script lang="ts" setup>
 import { ref, markRaw, onMounted } from 'vue'
 import lottie from 'lottie-web'
@@ -31,6 +18,20 @@ onMounted(() => {
   })
 })
 </script>
+
+<template>
+  <div class="authentication">
+    <div class="authentication_bg">
+      <img src="@/assets/auth-mask-bg.png" class="authentication_bg_mask" />
+      <div class="authentication_bg_cube"></div>
+    </div>
+    <div class="authentication_content">
+      <transition name="route-transition" mode="out-in">
+        <component :is="isComponent" @changeComponent="changeComponent"></component>
+      </transition>
+    </div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .authentication {
@@ -64,7 +65,6 @@ onMounted(() => {
     padding: 0px 46px;
     height: 100%;
     background-color: #fff;
-    box-shadow: var(--el-box-shadow-light);
   }
 }
 </style>
