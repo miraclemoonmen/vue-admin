@@ -1,20 +1,3 @@
-<template>
-  <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" :height="tableOptions.height"
-    :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50" highlight-current-row
-    v-bind="$attrs">
-    <template v-for="(item, index) in columns" :key="item.id || index">
-      <el-table-column v-bind="item">
-        <template #default="scope">
-          <span v-if="!item.slot">{{ scope.row[item.prop] }}</span>
-          <slot v-else :name="item.slot" :scope="scope.row"></slot>
-        </template>
-      </el-table-column>
-    </template>
-    <template #empty>
-      <el-empty :description="tableOptions.description"></el-empty>
-    </template>
-  </el-table>
-</template>
 
 <script lang="ts" setup>
 import {
@@ -63,3 +46,21 @@ onBeforeUnmount(() => {
 })
 
 </script>
+
+<template>
+  <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" :height="tableOptions.height"
+    :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50" highlight-current-row
+    v-bind="$attrs">
+    <template v-for="(item, index) in columns" :key="item.id || index">
+      <el-table-column v-bind="item">
+        <template #default="scope">
+          <span v-if="!item.slot">{{ scope.row[item.prop] }}</span>
+          <slot v-else :name="item.slot" :scope="scope.row"></slot>
+        </template>
+      </el-table-column>
+    </template>
+    <template #empty>
+      <el-empty :description="tableOptions.description"></el-empty>
+    </template>
+  </el-table>
+</template>

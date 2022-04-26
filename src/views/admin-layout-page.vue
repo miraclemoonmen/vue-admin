@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+import menuComponent from '@/components/menu-component.vue'
+import viewsTabsComponent from '@/components/views-tabs-component.vue'
+// import Breadcrumb from "@/components/Breadcrumb.vue";
+import avatarComponent from '@/components/avatar-component.vue'
+</script>
+
  <template>
   <el-container>
     <el-aside>
@@ -23,13 +30,6 @@
     <el-backtop target=".el-main" :bottom="60" />
   </el-container>
 </template>
-
-<script lang="ts" setup>
-import menuComponent from '@/components/menu-component.vue'
-import viewsTabsComponent from '@/components/views-tabs-component.vue'
-// import Breadcrumb from "@/components/Breadcrumb.vue";
-import avatarComponent from '@/components/avatar-component.vue'
-</script>
 
 <style lang="scss" scoped>
 .el-container {

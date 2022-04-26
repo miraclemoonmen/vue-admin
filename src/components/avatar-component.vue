@@ -1,21 +1,3 @@
-<template>
-  <el-dropdown @command="handleCommand">
-    <div class="avatar">
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-      <span class="name">Hi, 管理员</span>
-      <el-icon>
-        <ArrowDownBold />
-      </el-icon>
-    </div>
-    <template #dropdown>
-      <el-dropdown-menu>
-        <el-dropdown-item disabled>编辑个人信息</el-dropdown-item>
-        <el-dropdown-item command="signOut">退出登录</el-dropdown-item>
-      </el-dropdown-menu>
-    </template>
-  </el-dropdown>
-</template>
-
 <script lang="ts" setup>
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -45,6 +27,24 @@ const signOut = () => {
 }
 </script>
 
+<template>
+  <el-dropdown @command="handleCommand">
+    <div class="avatar">
+      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+      <span class="name">Hi, 管理员</span>
+      <el-icon>
+        <ArrowDownBold />
+      </el-icon>
+    </div>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item disabled>编辑个人信息</el-dropdown-item>
+        <el-dropdown-item command="signOut">退出登录</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
+
 <style lang="scss" scoped>
 .el-dropdown {
   .avatar {
@@ -54,11 +54,13 @@ const signOut = () => {
     margin: 0 20px;
     padding: 0 10px;
     transition: background-color 0.25s;
+
     .name {
       font-size: 12px;
       margin-left: 15px;
       margin-right: 15px;
     }
+
     .el-avatar {
       width: 35px;
       height: 35px;

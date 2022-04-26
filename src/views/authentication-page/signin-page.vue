@@ -1,25 +1,3 @@
-<template>
-  <div>
-    <h2 class="login_content_title">Welcome 👋🏻</h2>
-    <div class="login_content_input">
-      <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
-      <el-button @click="getLogin" :loading="loading" class="login_content_input_button">登 录</el-button>
-    </div>
-    <div class="login_content_about">
-      <el-checkbox
-        @click.prevent="setKeepPassword"
-        :model-value="keepPassword"
-        label="记住密码"
-        size="large"
-      ></el-checkbox>
-      <el-button type="text">忘记密码？</el-button>
-    </div>
-    <p class="login_content_register">
-      还没有账号？
-      <el-link type="primary" @click="changeComponent">点此注册</el-link>
-    </p>
-  </div>
-</template>
 
 <script lang="ts" setup>
 import { ref, reactive, computed } from 'vue'
@@ -27,12 +5,11 @@ import { useStore } from 'vuex'
 import { GlobalDataProps } from '@/store'
 import { useRouter } from 'vue-router'
 import formComponent from '@/components/form-component.vue'
-const store = useStore<GlobalDataProps>()
-// eslint-disable-next-line no-undef
 const emit = defineEmits<{(e: 'changeComponent'): void }>()
 const changeComponent = () => {
   emit('changeComponent')
 }
+const store = useStore<GlobalDataProps>()
 const router = useRouter()
 
 const form = ref()
@@ -92,12 +69,31 @@ const getLogin = () => {
 }
 </script>
 
+<template>
+  <div>
+    <h2 class="login_content_title">Welcome 👋🏻</h2>
+    <div class="login_content_input">
+      <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
+      <el-button @click="getLogin" :loading="loading" class="login_content_input_button">登 录</el-button>
+    </div>
+    <div class="login_content_about">
+      <el-checkbox @click.prevent="setKeepPassword" :model-value="keepPassword" label="记住密码" size="large"></el-checkbox>
+      <el-button type="text">忘记密码？</el-button>
+    </div>
+    <p class="login_content_register">
+      还没有账号？
+      <el-link type="primary" @click="changeComponent">点此注册</el-link>
+    </p>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 .login_content {
   &_title {
     color: $color;
     padding-bottom: 57px;
   }
+
   &_input {
     &_button {
       width: 100%;
@@ -110,11 +106,13 @@ const getLogin = () => {
       border-radius: var(--el-border-radius-base);
     }
   }
+
   &_about {
     display: flex;
     padding-top: 10px;
     justify-content: space-between;
   }
+
   &_register {
     margin-top: 20px;
     font-size: 14px;

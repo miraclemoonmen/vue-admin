@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import { useStore } from 'vuex'
+
+defineProps<{
+  menuList: any[]
+}>()
+const store = useStore()
+const onClickMenu = (name: string, url: string) => {
+  store.dispatch('ADD_TABS', { name, url })
+}
+</script>
+
 <template>
   <template v-for="(item, index) in menuList" :key="index">
     <el-menu-item :index="item.path" v-if="!item?.children && item.meta?.hide !== true"
@@ -20,18 +32,6 @@
     </el-sub-menu>
   </template>
 </template>
-
-<script lang="ts" setup>
-import { useStore } from 'vuex'
-
-defineProps<{
-  menuList: any[]
-}>()
-const store = useStore()
-const onClickMenu = (name: string, url: string) => {
-  store.dispatch('ADD_TABS', { name, url })
-}
-</script>
 
 <style lang="scss">
 .el-aside {

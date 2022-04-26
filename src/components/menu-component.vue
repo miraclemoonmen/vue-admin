@@ -1,10 +1,3 @@
-<template>
-  <el-menu :default-active="defaultPath" router background-color="#111827" text-color="#fff">
-    <li class="logo"></li>
-    <menu-item-component :menuList="menuList" />
-  </el-menu>
-</template>
-
 <script lang="ts" setup>
 import { GlobalDataProps } from '@/store'
 import { computed } from 'vue'
@@ -17,6 +10,13 @@ const store = useStore<GlobalDataProps>()
 const defaultPath = computed(() => route.fullPath)
 const menuList = computed(() => store.state.menuList.data)
 </script>
+
+<template>
+  <el-menu :default-active="defaultPath" router background-color="#1d2228" text-color="#fff">
+    <li class="logo"></li>
+    <menu-item-component :menuList="menuList" />
+  </el-menu>
+</template>
 
 <style lang="scss" scoped>
 .logo {

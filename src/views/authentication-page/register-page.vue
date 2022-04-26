@@ -1,33 +1,13 @@
-<template>
-  <div>
-    <p class="register_content_back" @click="changeComponent">
-      <el-icon>
-        <back />
-      </el-icon>
-      <span class="register_content_back_text">返回</span>
-    </p>
-    <h2 class="register_content_title">Register</h2>
-    <div class="register_content_input">
-      <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
-      <el-button @click="getRegister" :loading="loading" class="register_content_input_button">注 册</el-button>
-    </div>
-    <div class="register_content_about"></div>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
 import { useToast } from 'vue-toastification'
 import formComponent from '@/components/form-component.vue'
 
-// eslint-disable-next-line no-undef
 const emit = defineEmits<{(e: 'changeComponent'): void }>()
 const toast = useToast()
-
 const changeComponent = () => {
   emit('changeComponent')
 }
-
 const loading = ref(false)
 const form = ref()
 const formOptions = reactive([
@@ -79,6 +59,23 @@ const getRegister = () => {
   )
 }
 </script>
+
+<template>
+  <div>
+    <p class="register_content_back" @click="changeComponent">
+      <el-icon>
+        <back />
+      </el-icon>
+      <span class="register_content_back_text">返回</span>
+    </p>
+    <h2 class="register_content_title">Register</h2>
+    <div class="register_content_input">
+      <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
+      <el-button @click="getRegister" :loading="loading" class="register_content_input_button">注 册</el-button>
+    </div>
+    <div class="register_content_about"></div>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .register_content {

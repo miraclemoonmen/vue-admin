@@ -1,7 +1,3 @@
-<template>
-  <div ref="container" class="chart"></div>
-</template>
-
 <script lang="ts" setup>
 import {
   ref,
@@ -42,6 +38,10 @@ onMounted(() => {
   })
 })
 </script>
+
+<template>
+  <div ref="container" class="chart"></div>
+</template>
 
 <style lang="scss" scoped>
 .chart {

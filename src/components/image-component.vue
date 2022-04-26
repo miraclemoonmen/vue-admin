@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+import { ref, watch } from 'vue'
+const props = defineProps<{
+  src: string
+  srcList?: any[]
+}>()
+const loading = ref(true)
+watch(
+  () => props.src,
+  () => {
+    loading.value = false
+  }
+)
+</script>
+
 <template>
   <div class="fill">
     <el-skeleton class="fill" :loading="loading" animated>
@@ -16,22 +31,6 @@
     </el-skeleton>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { ref, watch } from 'vue'
-
-const props = defineProps<{
-  src: string
-  srcList?: any[]
-}>()
-const loading = ref(true)
-watch(
-  () => props.src,
-  () => {
-    loading.value = false
-  }
-)
-</script>
 
 <style lang="scss" scoped>
 .fill {
