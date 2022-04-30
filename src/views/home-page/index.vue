@@ -72,6 +72,23 @@ getTableData2()
 </template>
 
 <style lang="scss" scoped>
+@mixin globularStyle($textColor, $bgColor, $circularColor) {
+  color: $textColor;
+  background-color: $bgColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    background: $circularColor;
+    border-radius: 50%;
+    z-index: 1;
+    top: -85px;
+    right: -95px;
+  }
+}
+
 .home {
   &_top {
     display: flex;
@@ -99,70 +116,19 @@ getTableData2()
     }
 
     &_item_num:nth-child(1) {
-      color: #b39ddb;
-      background-color: #5e35b1;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 210px;
-        height: 210px;
-        background: rgb(69, 39, 160);
-        border-radius: 50%;
-        top: -85px;
-        right: -95px;
-      }
+      @include globularStyle(#b39ddb, #5e35b1, rgb(69, 39, 160));
     }
 
     &_item_num:nth-child(2) {
-      color: #90caf9;
-      background-color: #1e88e5;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 210px;
-        height: 210px;
-        background: rgb(21, 101, 192);
-        border-radius: 50%;
-        z-index: 1;
-        top: -85px;
-        right: -95px;
-      }
+      @include globularStyle(#90caf9, #1e88e5, rgb(21, 101, 192));
     }
 
     &_item_num:nth-child(3) {
-      color: #f2d1c6;
-      background-color: #d84315;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 210px;
-        height: 210px;
-        background: #bf4138;
-        border-radius: 50%;
-        z-index: 1;
-        top: -85px;
-        right: -95px;
-      }
+      @include globularStyle(#f2d1c6, #d84315, #bf4138);
     }
 
     &_item_num:nth-child(4) {
-      color: #c6ebd5;
-      background-color: #00C853;
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 210px;
-        height: 210px;
-        background: #1ab85c;
-        border-radius: 50%;
-        z-index: 1;
-        top: -85px;
-        right: -95px;
-      }
+      @include globularStyle(#c6ebd5, #00C853, #1ab85c);
     }
   }
 
