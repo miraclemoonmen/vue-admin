@@ -3,7 +3,7 @@ import { GlobalDataProps } from '@/store'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import menuItemComponent from './menu-item-component.vue'
+import theMenuItems from './the-menu-items.vue'
 
 const route = useRoute()
 const store = useStore<GlobalDataProps>()
@@ -14,7 +14,7 @@ const menuList = computed(() => store.state.menuList.data)
 <template>
   <el-menu :default-active="defaultPath" router>
     <li class="logo"></li>
-    <menu-item-component :menuList="menuList" />
+    <the-menu-items :menuList="menuList" />
   </el-menu>
 </template>
 
@@ -24,6 +24,7 @@ const menuList = computed(() => store.state.menuList.data)
 }
 
 .el-menu {
+  position: fixed;
   border: none;
 }
 </style>

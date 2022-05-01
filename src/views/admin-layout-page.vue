@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import menuComponent from '@/components/menu-component.vue'
-import viewsTabsComponent from '@/components/views-tabs-component.vue'
+import theMenu from '@/components/the-menu.vue'
+import theViewsTabs from '@/components/the-views-tabs.vue'
 // import Breadcrumb from "@/components/Breadcrumb.vue";
 import avatarComponent from '@/components/avatar-component.vue'
 </script>
@@ -8,15 +8,14 @@ import avatarComponent from '@/components/avatar-component.vue'
  <template>
   <el-container>
     <el-aside>
-      <menu-component />
+      <the-menu />
     </el-aside>
     <el-container>
       <el-header>
         <div class="header_top">
-          <div></div>
           <avatar-component />
         </div>
-        <views-tabs-component />
+        <the-views-tabs />
       </el-header>
       <el-main>
         <router-view v-slot="{ Component }">
@@ -26,23 +25,21 @@ import avatarComponent from '@/components/avatar-component.vue'
         </router-view>
       </el-main>
     </el-container>
-
-    <el-backtop target=".el-main" :bottom="60" />
+    <el-backtop />
   </el-container>
 </template>
 
 <style lang="scss" scoped>
-.el-container {
-  overflow: hidden;
-}
-
 .el-aside {
-  z-index: 2;
-  width: auto;
+  width: 215px;
 }
 
 .el-header {
-  z-index: 1;
+  position: fixed;
+  z-index: 1000;
+  width: calc(100% - 215px);
+  left: auto;
+  right: 0px;
   padding: 0px;
   height: auto;
   background-color: #fff;
@@ -52,28 +49,12 @@ import avatarComponent from '@/components/avatar-component.vue'
     padding: 0px 20px 0px 20px;
     height: 64px;
     align-items: center;
-    justify-content: space-between;
-  }
-
-  .logo {
-    padding-left: 10px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .collapseIcon {
-    font-size: 23px;
-    cursor: pointer;
-    margin-right: 30px;
-    transition: color 0.25s;
-
-    &:hover {
-      color: $color;
-    }
+    justify-content: end;
   }
 }
 
 .el-main {
+  margin-top: 115px;
   background-color: #f5f8fa;
 }
 </style>

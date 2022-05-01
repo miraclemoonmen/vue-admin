@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { onMounted } from 'vue'
+import lottie from 'lottie-web'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 const router = useRouter()
@@ -9,6 +11,17 @@ const goHome = async () => {
   store.dispatch('DEL_TABS', route.fullPath)
   router.push('/')
 }
+
+onMounted(() => {
+  const box = document.querySelector('.errPage_content_image') as HTMLElement
+  lottie.loadAnimation({
+    container: box,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '/error-doodle-animation.json'
+  })
+})
 </script>
 
 <template>
@@ -31,7 +44,10 @@ const goHome = async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+
   &_content {
+    display: flex;
+    flex-direction: column;
     @include whiteContent;
     box-shadow: none;
     height: 90%;
@@ -39,28 +55,32 @@ const goHome = async () => {
     box-sizing: border-box;
     padding: 24px;
     flex: 0 0 500px;
+
     &_image {
       width: 100%;
       height: 391px;
-      background: url("../assets/404-illustration.svg") center / cover no-repeat;
     }
+
     &_text {
       text-align: center;
+
       h1 {
         font-size: 36px;
       }
+
       p {
         font-size: 14px;
       }
     }
+
     &_button {
-      width: 100%;
+      margin: 0 auto;
+      width: 50%;
       height: 40px;
       color: #fff;
       font-size: 15px;
       border: none;
       background-color: $color;
-      box-shadow: var(--el-box-shadow-light);
       border-radius: var(--el-border-radius-base);
     }
   }

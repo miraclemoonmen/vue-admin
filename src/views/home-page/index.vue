@@ -83,7 +83,6 @@ getTableData2()
     height: 210px;
     background: $circularColor;
     border-radius: 50%;
-    z-index: 1;
     top: -85px;
     right: -95px;
   }

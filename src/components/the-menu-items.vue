@@ -28,7 +28,7 @@ const onClickMenu = (name: string, url: string) => {
         </el-icon>
         <span>{{ item.meta.name }}</span>
       </template>
-      <menu-item-component :menuList="item?.children" />
+      <the-menu-items :menuList="item?.children" />
     </el-sub-menu>
   </template>
 </template>

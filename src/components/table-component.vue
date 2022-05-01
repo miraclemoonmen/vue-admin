@@ -49,8 +49,7 @@ onBeforeUnmount(() => {
 
 <template>
   <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" :height="tableOptions.height"
-    :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50" highlight-current-row
-    v-bind="$attrs">
+    :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50" v-bind="$attrs">
     <template v-for="(item, index) in columns" :key="item.id || index">
       <el-table-column v-bind="item">
         <template #default="scope">
