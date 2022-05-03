@@ -2,7 +2,7 @@
 import theMenu from '@/components/the-menu.vue'
 import theViewsTabs from '@/components/the-views-tabs.vue'
 // import Breadcrumb from "@/components/Breadcrumb.vue";
-import avatarComponent from '@/components/avatar-component.vue'
+import theAvatar from '@/components/the-avatar.vue'
 </script>
 
  <template>
@@ -13,7 +13,7 @@ import avatarComponent from '@/components/avatar-component.vue'
     <el-container>
       <el-header>
         <div class="header_top">
-          <avatar-component />
+          <the-avatar />
         </div>
         <the-views-tabs />
       </el-header>

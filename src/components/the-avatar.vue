@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { show } from '@/components/el-loading-component'
+import { show } from '@/components/the-el-loading'
 import { ElMessageBox } from 'element-plus'
 const store = useStore()
 const router = useRouter()
@@ -52,9 +52,13 @@ const signOut = () => {
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin: 0 20px;
-    padding: 0 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
     transition: background-color 0.25s;
+
+    &:hover {
+      background-color: rgb(243, 246, 249);
+    }
 
     .name {
       font-size: 12px;

@@ -22,8 +22,8 @@ instance.interceptors.request.use(config => {
   if (config.method === 'get') {
     config.paramsSerializer = params => {
       const tmp = { ...params }
-      Object.keys(params).forEach(key => {
-        if (trim(params[key]) === '' || params[key] == null) {
+      Reflect.ownKeys(params).forEach(key => {
+        if (trim(params[key]).length === 0) {
           delete tmp[key]
         }
       })
