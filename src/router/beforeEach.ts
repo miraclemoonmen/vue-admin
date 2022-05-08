@@ -15,9 +15,12 @@ const addRoute = async () => {
   const data = await store.dispatch('SET_MENULIST')
   const eachAddRoute = (item: RouteRecordRaw[], parentName = 'LayoutViewAdmin') => {
     item.forEach(item => {
-      item.component = routerList[item.name as string]
+      const componentName = item.name as string
+      const component = Reflect.get(routerList, componentName)
+      if (!component) throw new Error(`Not Find ${componentName} Page`)
+      Reflect.set(item, 'component', component)
       router.addRoute(parentName, item)
-      item.children && eachAddRoute(item.children, item.name as string)
+      item.children && eachAddRoute(item.children, componentName)
     })
   }
   eachAddRoute(data)
