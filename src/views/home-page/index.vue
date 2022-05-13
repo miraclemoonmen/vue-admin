@@ -4,8 +4,8 @@ import echartsComponent from '@/components/echarts-component.vue'
 import tableComponent from '@/components/table-component.vue'
 import { useInitTable } from '@/hooks/useTable'
 
-const { tableData: tableData1, tableLoading: tableLoading1, sortChange: sortChange1, getTableData: getTableData1 } = useInitTable('/mock/getList', paginationAndSortOptions1)
-const { tableData: tableData2, tableLoading: tableLoading2, sortChange: sortChange2, getTableData: getTableData2 } = useInitTable('/mock/getList', paginationAndSortOptions2)
+const { tableData: tableData1, tableLoading: tableLoading1, sortChange: sortChange1, getTableData: getTableData1 } = useInitTable('https://www.fastmock.site/mock/9610740db4aff3d4fa9b3f816a2ced43/mock/getList', paginationAndSortOptions1)
+const { tableData: tableData2, tableLoading: tableLoading2, sortChange: sortChange2, getTableData: getTableData2 } = useInitTable('https://www.fastmock.site/mock/9610740db4aff3d4fa9b3f816a2ced43/mock/getList', paginationAndSortOptions2)
 getTableData1()
 getTableData2()
 </script>

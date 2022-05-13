@@ -14,7 +14,7 @@ interface Tree {
 }
 
 const toast = useToast()
-const { tableData, tableLoading, sortChange, getTableData } = useInitTable('/mock/getList', paginationAndSortOptions)
+const { tableData, tableLoading, sortChange, getTableData } = useInitTable('https://www.fastmock.site/mock/9610740db4aff3d4fa9b3f816a2ced43/mock/getList', paginationAndSortOptions)
 const search = () => {
   getTableData(searchFormData)
 }

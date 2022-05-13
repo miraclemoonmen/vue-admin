@@ -20,11 +20,8 @@ module.exports = defineConfig({
         target: process.env.VUE_APP_BASE_URL,
         ws: true,
         changeOrigin: true
-      },
-      '/mock': {
-        target: 'https://www.fastmock.site/mock/9610740db4aff3d4fa9b3f816a2ced43',
-        ws: true,
-        changeOrigin: true
+        // cookieDomainRewrite
+        // '*': 'localhost'
       },
       '/jsonServer': {
         target: 'http://localhost:3000',

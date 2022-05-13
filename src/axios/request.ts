@@ -4,14 +4,16 @@ import store, { GlobalDataProps } from '@/store'
 import { useToast } from 'vue-toastification'
 import qs from 'qs'
 import { trim } from 'lodash'
-
 const toast = useToast()
+const jwt = computed(() => (store.state as unknown as GlobalDataProps).user.token)
 
-const instance = axios.create({
+export const instance = axios.create({
   timeout: 5000
+  // `withCredentials` indicates whether or not cross-site Access-Control requests
+  // should be made using credentials
+  // withCredentials: true
 })
 
-const jwt = computed(() => (store.state as unknown as GlobalDataProps).user.token)
 instance.interceptors.request.use(config => {
   if (jwt.value) {
     config.headers = {
@@ -31,17 +33,18 @@ instance.interceptors.request.use(config => {
     }
   }
   return config
-}, err => {
-  return Promise.reject(err)
-})
+}, err => Promise.reject(err))
 
 instance.interceptors.response.use(response => {
-  const data = response.data as Record<string, unknown>
-  // if (data.code === 200) {
-  return data
-  // } else {
-  // errorMessage()
-  // }
+  const data = response.data as Record<string, any>
+  const status = response.status
+  switch (status) {
+    case 200:
+      return data
+    default:
+      toast.error(`${status}`)
+      break
+  }
 }, err => {
   const response = err.response
   if (response) {
@@ -49,8 +52,5 @@ instance.interceptors.response.use(response => {
   } else {
     toast.error(`${err.config.url} is ${err.message}`)
   }
-
   return Promise.reject(err)
 })
-
-export { instance }
