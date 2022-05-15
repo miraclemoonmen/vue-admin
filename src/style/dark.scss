@@ -1,13 +1,24 @@
-@forward 'element-plus/theme-chalk/src/dark/var.scss' with (
+@forward "element-plus/theme-chalk/src/dark/var.scss" with (
   $colors: (
     "primary": (
-      "base": #38BDF8,
+      "base": #38bdf8,
     ),
   ),
   $bg-color: (
-    'page': rgb(30,41,59),
-    '': rgb(30,41,59),
-    'overlay': rgb(30,41,59),
+    // "page": rgb(30, 41, 59),
+    "": rgb(30, 41, 59),
+    "overlay": rgb(30, 41, 59),
+  ),
+  $border-color: (
+    // "light": #2b3647,
+    // "lighter": #2b3647,
+  ),
+  $text-color: (
+    // "primary": rgb(71, 85, 105),
+    "regular": #94A3B8,
+    // "secondary": red,
+    // "placeholder": red,
+    // "disabled": red,
   )
 );
 

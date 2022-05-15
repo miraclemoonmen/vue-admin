@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'el-base': '#1972D6'
+        'el-base': '#1972D6',
+        'el-dark-base': '#38bdf8'
       }
     }
   }

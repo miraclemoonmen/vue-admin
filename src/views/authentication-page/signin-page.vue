@@ -68,16 +68,17 @@ const getLogin = () => {
 
 <template>
   <div>
-    <h2 class="text-el-base text-3xl font-bold pb-12">Welcome 👋🏻</h2>
+    <h2 class="text-el-base dark:text-el-dark-base text-3xl font-bold pb-12">Welcome 👋🏻</h2>
     <div>
       <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
       <el-button class="w-full !h-10" @click="getLogin" type="primary" :loading="loading">登 录</el-button>
     </div>
     <div class="flex justify-between">
-      <el-checkbox @click.prevent="store.dispatch('SET_KEEPASSWORD')" :model-value="keepPassword" label="记住密码" size="large"></el-checkbox>
+      <el-checkbox @click.prevent="store.dispatch('SET_KEEPASSWORD')" :model-value="keepPassword" label="记住密码"
+        size="large"></el-checkbox>
       <el-link :underline="false">忘记密码？</el-link>
     </div>
-    <p class="flex text-xs mt-4 text-slate-600">
+    <p class="flex text-xs mt-4 text-slate-600 dark:text-slate-400">
       <span>还没有账号？</span>
       <el-link type="primary" @click="changeComponent">点此注册</el-link>
     </p>

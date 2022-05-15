@@ -16,7 +16,7 @@ const isDark = computed(() => store.state.user.isDark)
       <the-menu />
     </el-aside>
     <el-container>
-      <el-header class="!p-0 !h-auto right-0 fixed z-50 bg-white dark:bg-slate-800" style="width: calc(100% - 13rem)">
+      <el-header class="!p-0 !h-auto right-0 fixed z-50 bg-white/90 dark:bg-slate-800/90 backdrop-blur-lg" style="width: calc(100% - 13rem)">
         <div class="flex h-16 justify-end items-center px-5">
           <el-switch class="mr-3" size="large" inline-prompt inactive-icon="Sunrise"
             active-icon="MoonNight" :model-value="isDark" @click="store.dispatch('SET_ISDARK', !isDark)" />

@@ -12,10 +12,6 @@
 
 @use "element-plus/theme-chalk/src/index.scss" as *;
 
-p {
-  margin: 0;
-}
-
 .emptyView {
   .el-scrollbar__view {
     height: 100%;
@@ -44,5 +40,11 @@ p {
   }
   .el-select {
     width: 100%;
+  }
+}
+
+.dark {
+  .el-drawer {
+    box-shadow: none;
   }
 }

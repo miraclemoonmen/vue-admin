@@ -62,13 +62,13 @@ const getRegister = () => {
 
 <template>
   <div>
-    <p class="flex place-items-center mb-12" @click="changeComponent">
+    <p class="flex place-items-center mb-12 dark:text-slate-400" @click="changeComponent">
       <el-icon class="cursor-pointer">
         <back />
       </el-icon>
       <span class="pl-1 register_content_back_text cursor-pointer">返回</span>
     </p>
-    <h2 class="text-el-base text-3xl font-bold pb-12">Register</h2>
+    <h2 class="text-el-base dark:text-el-dark-base text-3xl font-bold pb-12">Register</h2>
     <div>
       <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
       <el-button class="w-full !h-10" type="primary" @click="getRegister" :loading="loading">注 册</el-button>

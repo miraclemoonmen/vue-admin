@@ -2,18 +2,15 @@
 import {
   ref,
   watch,
-  computed,
   onMounted,
   onBeforeUnmount
 } from 'vue'
-import { useStore } from 'vuex'
 import * as echarts from 'echarts'
+import { isDark } from '@/hooks/isDark'
 const props = defineProps<{
   option: any
 }>()
 const emit = defineEmits<{(e: 'chartClick', params: any): void }>()
-const store = useStore()
-const isDark = computed(() => store.state.user.isDark)
 const container = ref()
 const themeDark = {
   title: {

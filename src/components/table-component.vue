@@ -3,11 +3,10 @@
 import {
   reactive,
   nextTick,
-  computed,
   onMounted,
   onBeforeUnmount
 } from 'vue'
-import { useStore } from 'vuex'
+import { isDark } from '@/hooks/isDark'
 
 interface Props {
   url?: string,
@@ -19,8 +18,6 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
 })
-const store = useStore()
-const isDark = computed(() => store.state.user.isDark)
 const tableOptions = reactive({
   svg: ` <path class="path" d="
           M 30 15

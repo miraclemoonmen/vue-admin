@@ -59,19 +59,19 @@ const changeDrawer = async (type: string, value?: any) => {
 </script>
 
 <template>
-  <div class="user_manage">
-    <div class="user_manage_tree bg-white dark:bg-slate-800 dark:text-slate-400">
+  <div class="flex h-full w-full">
+    <div class="flex-[13%] rounded-lg text-center p-2 bg-white dark:bg-slate-800 dark:text-slate-400">
       <h5 class=" text-lg my-2 font-bold">组织机构</h5>
       <el-tree :data="dataTree" :props="defaultTreeProps" @node-click="handleNodeClick" />
     </div>
-    <div class="user_manage_table bg-white dark:bg-slate-800">
-      <div class="user_manage_table_header">
+    <div class="flex flex-col flex-auto ml-5 p-2 bg-white dark:bg-slate-800 rounded-lg">
+      <div class="pt-2">
         <search-form-component @search="search" />
       </div>
-      <div class="user_manage_table_action">
+      <div class="mb-4 ml-4">
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
-      <div class="user_manage_table_content">
+      <div class="flex-1 overflow-hidden">
         <table-component :columns="columns" :data="tableData" v-loading="tableLoading" @sort-change="sortChange">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
@@ -92,41 +92,3 @@ const changeDrawer = async (type: string, value?: any) => {
     <submit-form-component v-model:isopen="isopen" @search="search" />
   </div>
 </template>
-
-<style lang="scss" scoped>
-.user_manage {
-  display: flex;
-  height: 100%;
-
-  &_tree {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    @include whiteContent;
-    flex: 0 0 13%;
-    text-align: center;
-  }
-
-  &_table {
-    margin-left: 20px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    @include whiteContent;
-
-    &_header {
-      padding-top: 10px;
-    }
-
-    &_action {
-      margin: 0px 0px 18px 15px;
-    }
-
-    &_content {
-      flex: 1;
-      overflow: hidden;
-    }
-  }
-}
-</style>
