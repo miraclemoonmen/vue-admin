@@ -60,11 +60,11 @@ const changeDrawer = async (type: string, value?: any) => {
 
 <template>
   <div class="user_manage">
-    <div class="user_manage_tree">
-      <h5>组织机构</h5>
+    <div class="user_manage_tree bg-white dark:bg-slate-800 dark:text-slate-400">
+      <h5 class=" text-lg my-2 font-bold">组织机构</h5>
       <el-tree :data="dataTree" :props="defaultTreeProps" @node-click="handleNodeClick" />
     </div>
-    <div class="user_manage_table">
+    <div class="user_manage_table bg-white dark:bg-slate-800">
       <div class="user_manage_table_header">
         <search-form-component @search="search" />
       </div>

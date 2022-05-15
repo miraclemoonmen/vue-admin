@@ -29,7 +29,6 @@ const removeTab = (targetName: string) => {
 .el-header {
   .el-tabs {
     padding-top: 10px;
-    border-top: 1px solid #f6f6f6;
   }
 
   >.el-tabs--card> {

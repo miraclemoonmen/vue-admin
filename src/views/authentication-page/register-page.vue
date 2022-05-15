@@ -62,53 +62,16 @@ const getRegister = () => {
 
 <template>
   <div>
-    <p class="register_content_back" @click="changeComponent">
-      <el-icon>
+    <p class="flex place-items-center mb-12" @click="changeComponent">
+      <el-icon class="cursor-pointer">
         <back />
       </el-icon>
-      <span class="register_content_back_text">返回</span>
+      <span class="pl-1 register_content_back_text cursor-pointer">返回</span>
     </p>
-    <h2 class="register_content_title">Register</h2>
-    <div class="register_content_input">
+    <h2 class="text-el-base text-3xl font-bold pb-12">Register</h2>
+    <div>
       <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
-      <el-button @click="getRegister" :loading="loading" class="register_content_input_button">注 册</el-button>
+      <el-button class="w-full !h-10" type="primary" @click="getRegister" :loading="loading">注 册</el-button>
     </div>
-    <div class="register_content_about"></div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.register_content {
-  &_back {
-    display: flex;
-    width: 50px;
-    cursor: pointer;
-    font-size: 15px;
-    color: var(--el-text-color-regular);
-    &_text {
-      margin-left: 5px;
-    }
-  }
-  &_title {
-    color: $color;
-    padding-bottom: 57px;
-  }
-  &_input {
-    &_button {
-      width: 100%;
-      height: 40px;
-      color: #fff;
-      font-size: 15px;
-      border: none;
-      background-color: $color;
-      box-shadow: var(--el-box-shadow-light);
-      border-radius: var(--el-border-radius-base);
-    }
-  }
-  &_about {
-    display: flex;
-    padding-top: 10px;
-    justify-content: space-between;
-  }
-}
-</style>

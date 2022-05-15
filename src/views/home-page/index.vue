@@ -12,28 +12,28 @@ getTableData2()
 
 <template>
   <div class="home">
-    <div class="home_top">
+    <div class="grid grid-cols-4 gap-x-8">
       <div v-for="(item, index) in 4" :key="index" class="home_top_item_num">
         <div class="home_top_item_num_title">总收入</div>
         <div class="home_top_item_num_middle">￥28,425.00</div>
         <div class="home_top_item_num_foot">自从上周以来</div>
       </div>
     </div>
-    <div class="home_topmidlle">
-      <div class="home_topmidlle_line">
-        <div class="title">
+    <div class="grid mt-[1.13rem] h-96 grid-flow-col grid-cols-4">
+      <div class="home_topmidlle_line bg-white dark:bg-slate-800 col-span-3">
+        <div class="title dark:text-slate-400">
           <p>统计数据</p>
         </div>
         <echarts-component class="home_topmidlle_line_content" :option="optionLine" />
       </div>
-      <div class="home_topmidlle_pie">
-        <div class="title">处置调度</div>
+      <div class="home_topmidlle_pie bg-white dark:bg-slate-800">
+        <div class="title dark:text-slate-400">处置调度</div>
         <echarts-component class="home_topmidlle_pie_content" :option="optionPie" />
       </div>
     </div>
     <div class="home_midlle">
-      <div class="home_midlle_left">
-        <div class="title">指挥中心</div>
+      <div class="home_midlle_left bg-white dark:bg-slate-800">
+        <div class="title dark:text-slate-400">指挥中心</div>
         <div class="home_midlle_left_content">
           <table-component :columns="columns1" :data="tableData1" v-loading="tableLoading1" @sort-change="sortChange1">
             <template #name="{ scope }">
@@ -53,12 +53,12 @@ getTableData2()
           :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" @size-change="getTableData1"
           @current-change="getTableData1" />
       </div>
-      <div class="home_midlle_right">
-        <div class="title">指挥中心</div>
+      <div class="home_midlle_right bg-white dark:bg-slate-800">
+        <div class="title dark:text-slate-400">指挥中心</div>
         <div class="home_midlle_right_content">
           <table-component :columns="columns2" :data="tableData2" v-loading="tableLoading2" @sort-change="sortChange2">
             <template #name="{ scope }">
-              <el-button type="text">{{ scope.name }}</el-button>
+              <el-link>{{ scope.name }}</el-link>
             </template>
           </table-component>
         </div>
@@ -177,6 +177,7 @@ getTableData2()
       flex-direction: column;
       flex: 1;
       @include whiteContent;
+      // background-color: var(--el-bg-color);
       padding-bottom: 20px;
       overflow: hidden;
       padding: 0px 10px 10px 10px;

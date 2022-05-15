@@ -4,6 +4,7 @@ import store, { GlobalDataProps } from '@/store'
 import { useToast } from 'vue-toastification'
 import qs from 'qs'
 import { trim } from 'lodash'
+
 const toast = useToast()
 const jwt = computed(() => (store.state as unknown as GlobalDataProps).user.token)
 
@@ -41,6 +42,9 @@ instance.interceptors.response.use(response => {
   switch (status) {
     case 200:
       return data
+    case 401:
+      // store.dispatch('CLEAR_TOKEN')
+      break
     default:
       toast.error(`${status}`)
       break

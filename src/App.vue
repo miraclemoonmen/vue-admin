@@ -3,10 +3,18 @@
 </template>
 
 <style lang="scss">
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: 13px !important;
+  }
+}
+
 html,
 body,
 #app {
-  height: 100%;
+  height: auto;
+  min-height: 100vh;
+  font-size: 16px;
 }
 
 #app {
@@ -35,16 +43,29 @@ body,
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 20px;
+  border-radius: 25px;
   background-color: #cccccc;
 
   &:hover {
     background-color: #b2b2b2;
+  }
+}
+
+::-webkit-scrollbar-track {
+  margin: 5px 0px;
+}
+
+.dark {
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(71,81,96, 0.7);
+    &:hover {
+      background-color: rgba(98,108,123, 0.7);
+    }
   }
 }
 </style>

@@ -40,7 +40,7 @@ const onClickMenu = (name: string, url: string) => {
     height: 100%;
 
     &:not(.el-menu--collapse) {
-      width: 215px;
+      width: 208px;
 
       .el-menu-item,
       .el-sub-menu__title {
@@ -49,12 +49,12 @@ const onClickMenu = (name: string, url: string) => {
         border-radius: 5px;
 
         &:hover {
-          background-color: rgb(243, 246, 249);
+          background-color: var(--el-fill-color-light);
         }
 
         &.is-active {
           font-weight: bold;
-          background-color: rgb(224, 239, 255);
+          background-color: var(--el-color-primary-light-9);
         }
       }
 

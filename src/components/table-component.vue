@@ -3,9 +3,11 @@
 import {
   reactive,
   nextTick,
+  computed,
   onMounted,
   onBeforeUnmount
 } from 'vue'
+import { useStore } from 'vuex'
 
 interface Props {
   url?: string,
@@ -17,6 +19,8 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
 })
+const store = useStore()
+const isDark = computed(() => store.state.user.isDark)
 const tableOptions = reactive({
   svg: ` <path class="path" d="
           M 30 15
@@ -49,7 +53,8 @@ onBeforeUnmount(() => {
 
 <template>
   <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" :height="tableOptions.height"
-    :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50" v-bind="$attrs">
+    :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50"
+    :element-loading-background="isDark ? 'rgba(30,41,59, 0.9)' : null" v-bind="$attrs">
     <template v-for="(item, index) in columns" :key="item.id || index">
       <el-table-column v-bind="item">
         <template #default="scope">

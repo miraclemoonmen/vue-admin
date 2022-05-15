@@ -1,7 +1,7 @@
 $color: #1972D6;
 
 @mixin whiteContent {
-  background-color: #fff;
+  // background-color: #fff;
   border-radius: 8px;
 }
 
@@ -21,6 +21,6 @@ $color: #1972D6;
 
 .el-form-item-action {
   .el-form-item__content {
-    justify-content: end;
+    justify-content: flex-end;
   }
 }

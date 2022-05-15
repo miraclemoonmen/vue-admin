@@ -50,9 +50,6 @@ const formOptions = reactive([
 ])
 
 const keepPassword = computed(() => store.state.user.keepPassword)
-const setKeepPassword = () => {
-  store.dispatch('SET_KEEPASSWORD')
-}
 
 const loading = ref(false)
 const getLogin = () => {
@@ -71,53 +68,18 @@ const getLogin = () => {
 
 <template>
   <div>
-    <h2 class="login_content_title">Welcome 👋🏻</h2>
-    <div class="login_content_input">
+    <h2 class="text-el-base text-3xl font-bold pb-12">Welcome 👋🏻</h2>
+    <div>
       <form-component :formOptions="formOptions" ref="form" size="large" status-icon />
-      <el-button @click="getLogin" :loading="loading" class="login_content_input_button">登 录</el-button>
+      <el-button class="w-full !h-10" @click="getLogin" type="primary" :loading="loading">登 录</el-button>
     </div>
-    <div class="login_content_about">
-      <el-checkbox @click.prevent="setKeepPassword" :model-value="keepPassword" label="记住密码" size="large"></el-checkbox>
-      <el-button type="text">忘记密码？</el-button>
+    <div class="flex justify-between">
+      <el-checkbox @click.prevent="store.dispatch('SET_KEEPASSWORD')" :model-value="keepPassword" label="记住密码" size="large"></el-checkbox>
+      <el-link :underline="false">忘记密码？</el-link>
     </div>
-    <p class="login_content_register">
-      还没有账号？
+    <p class="flex text-xs mt-4 text-slate-600">
+      <span>还没有账号？</span>
       <el-link type="primary" @click="changeComponent">点此注册</el-link>
     </p>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.login_content {
-  &_title {
-    color: $color;
-    padding-bottom: 57px;
-  }
-
-  &_input {
-    &_button {
-      width: 100%;
-      height: 40px;
-      color: #fff;
-      font-size: 15px;
-      border: none;
-      background-color: $color;
-      box-shadow: var(--el-box-shadow-light);
-      border-radius: var(--el-border-radius-base);
-    }
-  }
-
-  &_about {
-    display: flex;
-    padding-top: 10px;
-    justify-content: space-between;
-  }
-
-  &_register {
-    margin-top: 20px;
-    font-size: 14px;
-    display: flex;
-    color: var(--el-text-color-regular);
-  }
-}
-</style>

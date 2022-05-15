@@ -57,7 +57,7 @@ const signOut = () => {
     transition: background-color 0.25s;
 
     &:hover {
-      background-color: rgb(243, 246, 249);
+      background-color: var(--el-fill-color-light);
     }
 
     .name {

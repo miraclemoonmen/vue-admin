@@ -7,9 +7,9 @@ export const optionLine = reactive({
   legend: {
     bottom: '5%'
   },
-  dimensions: ['day', 'ThisMonth', 'prevMonth'],
   color: ['rgb(126,87,194)', 'rgb(30,136,229)'],
   dataset: {
+    dimensions: ['day', 'ThisMonth', 'prevMonth'],
     source: [
       {
         day: '12-20',
@@ -52,7 +52,10 @@ export const optionLine = reactive({
     left: '6%',
     right: '6%'
   },
-  xAxis: [{ type: 'category', boundaryGap: false }],
+  xAxis: [{
+    type: 'category'
+    // boundaryGap: false
+  }],
   yAxis: [{}],
   series: [
     { name: '本月', type: 'line' },
@@ -65,9 +68,9 @@ export const optionPie = reactive({
   legend: {
     bottom: '5%'
   },
-  dimensions: ['product', 'value'],
   color: ['#2e65fd', '#76c15c', '#1fcaa8', '#fec02a', '#ee6565'],
   dataset: {
+    dimensions: ['product', 'value'],
     source: [
       { product: 'A类', value: 43.3 },
       { product: 'B类', value: 83.1 },
