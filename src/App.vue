@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss">
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 1919px) {
   html {
     font-size: 13px !important;
   }

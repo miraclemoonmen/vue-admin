@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { ref, markRaw, onMounted } from 'vue'
+import { shallowRef, onMounted } from 'vue'
 import lottie from 'lottie-web'
 import signinPage from './signin-page.vue'
 import registerPage from './register-page.vue'
 import { isDark } from '@/hooks/isDark'
-const isComponent = ref(markRaw(signinPage))
+const isComponent = shallowRef(signinPage)
 const changeComponent = () => {
-  isComponent.value = isComponent.value === signinPage ? markRaw(registerPage) : markRaw(signinPage)
+  isComponent.value = isComponent.value === signinPage ? registerPage : signinPage
 }
 onMounted(() => {
   const box = document.querySelector('.authentication_bg_cube') as HTMLElement

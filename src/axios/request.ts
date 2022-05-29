@@ -37,7 +37,7 @@ instance.interceptors.request.use(config => {
 }, err => Promise.reject(err))
 
 instance.interceptors.response.use(response => {
-  const data = response.data as Record<string, any>
+  const data = response.data as Record<string, unknown>
   const status = response.status
   switch (status) {
     case 200:
