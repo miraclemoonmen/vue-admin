@@ -1,24 +1,22 @@
 
 <script lang="ts" setup>
-import {
-  reactive,
-  nextTick,
-  onMounted,
-  onBeforeUnmount
-} from 'vue'
 import { isDark } from '@/hooks/isDark'
+import type { ItableData } from '@/hooks/useTable'
 
-interface Props {
+defineProps<{
   url?: string,
-  data: {
-    list?: any[]
-  },
-  columns: any[]
-}
+  data: ItableData | undefined,
+  columns: {
+    label: string,
+    prop?: string,
+    slot?: string,
+    width?: number,
+    align?: string,
+    fixed?: string
+  }[]
+}>()
 
-withDefaults(defineProps<Props>(), {
-})
-const tableOptions = reactive({
+const tableOptions = {
   svg: ` <path class="path" d="
           M 30 15
           L 28 17
@@ -27,35 +25,19 @@ const tableOptions = reactive({
           A 15 15, 0, 1, 1, 27.99 7.5
           L 15 15
         " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>`,
-  height: 0,
   description: '暂无数据'
-})
-
-const computeHeight = () => {
-  tableOptions.height = (document.querySelector('.el-table')?.parentNode as HTMLElement)?.clientHeight || 0
 }
-
-const initHeight = async () => {
-  await nextTick()
-  computeHeight()
-  window.addEventListener('resize', computeHeight)
-}
-
-onMounted(initHeight)
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', computeHeight)
-})
 
 </script>
 
 <template>
-  <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" :height="tableOptions.height"
+  <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" height="100%"
     :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50"
     :element-loading-background="isDark ? 'rgba(30,41,59, 0.9)' : null" v-bind="$attrs">
     <template v-for="(item, index) in columns" :key="item.id || index">
       <el-table-column v-bind="item">
         <template #default="scope">
-          <span v-if="!item.slot">{{ scope.row[item.prop] }}</span>
+          <span v-if="!item.slot && item.prop">{{ scope.row[item.prop] }}</span>
           <slot v-else :name="item.slot" :scope="scope.row"></slot>
         </template>
       </el-table-column>

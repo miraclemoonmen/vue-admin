@@ -104,9 +104,7 @@ export const columns1 = [
   {
     label: '年龄',
     prop: 'age',
-    type: 'link',
-    width: 160,
-    edit: true
+    width: 160
   },
   {
     label: '姓名',
@@ -116,7 +114,6 @@ export const columns1 = [
   {
     label: '年龄',
     prop: 'age',
-    type: 'link',
     width: 160
   },
   {

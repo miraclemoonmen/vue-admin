@@ -8,7 +8,7 @@ interface IpaginationAndSort {
   order: string
 }
 
-interface ItableData {
+export interface ItableData {
   list: any[],
   total: number
 }

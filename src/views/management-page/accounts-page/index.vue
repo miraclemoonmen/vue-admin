@@ -71,7 +71,7 @@ const changeDrawer = async (type: string, value?: any) => {
       <div class="mb-4 ml-4">
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
-      <div class="flex-1 overflow-hidden">
+      <div class="flex-1">
         <table-component :columns="columns" :data="tableData" v-loading="tableLoading" @sort-change="sortChange">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
