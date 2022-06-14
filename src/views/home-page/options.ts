@@ -131,7 +131,7 @@ export const columns1 = [
     label: '操作',
     slot: 'action',
     align: 'center',
-    width: 100,
+    width: 120,
     fixed: 'right'
   }
 ]

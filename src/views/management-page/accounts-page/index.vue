@@ -60,18 +60,18 @@ const changeDrawer = async (type: string, value?: any) => {
 
 <template>
   <div class="flex h-full w-full">
-    <div class="flex-[13%] rounded-lg text-center p-2 bg-white dark:bg-slate-800 dark:text-slate-400">
-      <h5 class=" text-lg my-2 font-bold">组织机构</h5>
+    <div class="w-52 flex-none rounded-lg text-center p-2 bg-white dark:bg-slate-800 dark:text-slate-400">
+      <h5 class="text-lg my-2 font-bold">组织机构</h5>
       <el-tree :data="dataTree" :props="defaultTreeProps" @node-click="handleNodeClick" />
     </div>
-    <div class="flex flex-col flex-auto ml-5 p-2 bg-white dark:bg-slate-800 rounded-lg">
+    <div class="flex flex-col overflow-hidden flex-auto ml-5 p-2 bg-white dark:bg-slate-800 rounded-lg">
       <div class="pt-2">
         <search-form-component @search="search" />
       </div>
       <div class="mb-4 ml-4">
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
-      <div class="flex-1">
+      <!-- <div class="flex-1"> -->
         <table-component :columns="columns" :data="tableData" v-loading="tableLoading" @sort-change="sortChange">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
@@ -83,7 +83,7 @@ const changeDrawer = async (type: string, value?: any) => {
             </el-button-group>
           </template>
         </table-component>
-      </div>
+      <!-- </div> -->
       <el-pagination class="el-table-pagination" v-model:currentPage="paginationAndSortOptions.currentPage"
         v-model:page-size="paginationAndSortOptions.pageSize" :total="tableData?.total || 0"
         :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" @size-change="getTableData"

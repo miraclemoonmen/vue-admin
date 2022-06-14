@@ -53,7 +53,7 @@ const onClickMenu = (name: string, url: string) => {
         }
 
         &.is-active {
-          font-weight: bold;
+          // font-weight: bold;
           background-color: var(--el-color-primary-light-9);
         }
       }
