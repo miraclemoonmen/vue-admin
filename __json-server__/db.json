@@ -17,20 +17,57 @@
     },
     {
       "path": "/test",
-      "name": "LayoutPage",
+      "name": "LayoutPage1",
       "redirect": "/test/user",
       "meta": {
         "name": "系统管理",
-        "icon": "Setting"
+        "icon": "Setting",
+        "list": true
       },
       "children": [
         {
-          "path": "/test/user",
+          "path": "/test/accounts",
           "name": "AccountsPage",
           "meta": {
             "name": "账号管理",
             "icon": "User"
           }
+        },
+        {
+          "path": "/test/permission",
+          "name": "Permission",
+          "meta": {
+            "name": "权限管理",
+            "icon": "Unlock"
+          }
+        },
+        {
+          "path": "/test/menu",
+          "name": "Menu",
+          "meta": {
+            "name": "菜单管理",
+            "icon": "Menu"
+          }
+        },
+        {
+          "path": "/test/test1",
+          "name": "LayoutPage2",
+          "redirect": "/test/test1/accounts",
+          "meta": {
+            "name": "系统管理1",
+            "icon": "Setting",
+            "list": true
+          },
+          "children": [
+            {
+              "path": "/test/test1/accounts",
+              "name": "AccountsPage2",
+              "meta": {
+                "name": "账号管理1",
+                "icon": "User"
+              }
+            }
+          ]
         }
       ]
     }

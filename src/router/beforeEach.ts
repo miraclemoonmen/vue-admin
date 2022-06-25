@@ -17,8 +17,15 @@ const addRoute = async () => {
     item.forEach(item => {
       const componentName = item.name as string
       const component = Reflect.get(routerList, componentName)
-      if (!component) throw new Error(`Not Find ${componentName} Page`)
-      Reflect.set(item, 'component', component)
+      if (!component) {
+        if ((item.meta as any).list) {
+          Reflect.set(item, 'component', Reflect.get(routerList, 'LayoutPage'))
+        } else {
+          throw new Error(`Not Find ${componentName} Page`)
+        }
+      } else {
+        Reflect.set(item, 'component', component)
+      }
       router.addRoute(parentName, item)
       item.children && eachAddRoute(item.children, componentName)
     })

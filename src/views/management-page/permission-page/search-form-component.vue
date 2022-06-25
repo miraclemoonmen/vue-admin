@@ -18,21 +18,6 @@ onBeforeUnmount(() => {
     <el-form-item label="姓名" prop="name">
       <el-input v-model="searchFormData.name" />
     </el-form-item>
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="searchFormData.name" />
-    </el-form-item>
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="searchFormData.name" />
-    </el-form-item>
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="searchFormData.name" />
-    </el-form-item>
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="searchFormData.name" />
-    </el-form-item>
-    <el-form-item label="姓名" prop="name">
-      <el-input v-model="searchFormData.name" />
-    </el-form-item>
     <el-form-item label="年龄" prop="age">
       <el-input v-model="searchFormData.age" />
     </el-form-item>
@@ -42,11 +27,8 @@ onBeforeUnmount(() => {
         <el-option label="Zone two" value="beijing" />
       </el-select>
     </el-form-item> -->
-    <el-form-item label="创建世界" prop="date">
+    <el-form-item label="创建时间" prop="date">
       <el-date-picker v-model="searchFormData.date" type="date" value-format="YYYY-MM-DD" />
-    </el-form-item>
-    <el-form-item label="年龄" prop="age">
-      <el-input v-model="searchFormData.age" />
     </el-form-item>
     <!-- <el-form-item></el-form-item>
     <el-form-item></el-form-item>
