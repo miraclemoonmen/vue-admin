@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { getEditor } from '@wangeditor/editor-for-vue'
+// import { getEditor } from '@wangeditor/editor-for-vue'
 
 export const initEditor: any = reactive({
   editorId: `w-e-${Math.random().toString().slice(-5)}`,
@@ -9,6 +9,6 @@ export const initEditor: any = reactive({
   mode: 'default'
 })
 
-export const isEditor = () => {
-  return getEditor(initEditor.editorId)
-}
+// export const isEditor = () => {
+//   return getEditor(initEditor.editorId)
+// }

@@ -45,13 +45,12 @@ import {
 } from 'vue'
 import {
   Editor,
-  Toolbar,
-  removeEditor
+  Toolbar
 } from '@wangeditor/editor-for-vue'
 import { cloneDeep } from 'lodash'
 import '@wangeditor/editor/dist/css/style.css'
 import { beforeRemove, useOnSuccess } from '@/hooks/useUpload'
-import { initEditor, isEditor } from '@/hooks/useEditor'
+import { initEditor } from '@/hooks/useEditor'
 import type { ElForm } from 'element-plus'
 type FormInstance = InstanceType<typeof ElForm>;
 
@@ -97,9 +96,9 @@ const submitForm = (
 ) => {
   if (!formRef.value) return
   formRef.value.validate((valid, object: any) => {
-    const editor = isEditor()
+    // const editor = isEditor()
     if (valid) {
-      editor && (form.editor = editor.children)
+      // editor && (form.editor = editor.children)
       submit(form)
     } else {
       formRef.value && formRef.value.scrollToField(Object.keys(object)[0])
@@ -108,10 +107,10 @@ const submitForm = (
   })
 }
 const resetForm = () => {
-  const editor = isEditor()
+  // const editor = isEditor()
   if (!formRef.value) return
   form.upload && (form.upload = [])
-  editor && editor.clear()
+  // editor && editor.clear()
   formRef.value.resetFields()
 }
 
@@ -122,11 +121,11 @@ defineExpose({
 })
 
 onMounted(() => {
-  const editor = isEditor()
+  // const editor = isEditor()
   onBeforeUnmount(() => {
-    if (editor == null) return
-    editor.destroy()
-    removeEditor(initEditor.editorId)
+    // if (editor == null) return
+    // editor.destroy()
+    // removeEditor(initEditor.editorId)
   })
 })
 </script>
