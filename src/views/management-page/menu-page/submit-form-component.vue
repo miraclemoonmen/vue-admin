@@ -76,9 +76,9 @@ const options = [
 // }
 
 const rules = reactive<FormRules>({
-  parentNode: [
-    { required: true, message: '请选择父级节点', trigger: 'change' }
-  ],
+  // parentNode: [
+  //   { required: true, message: '请选择父级节点', trigger: 'change' }
+  // ],
   name: [
     { required: true, message: '请输入名称', trigger: 'blur' }
   ],
@@ -107,7 +107,7 @@ const rules = reactive<FormRules>({
         <el-cascader v-model="submitFormData.parentNode" :options="options"
           :props="{ checkStrictly: true, emitPath: false }" clearable />
       </el-form-item>
-      <el-form-item label="名称" prop="name">
+      <el-form-item :label="submitFormData.type !== 'button' ? '组件名称' : '权限标识符'" prop="name">
         <el-input v-model="submitFormData.name" />
       </el-form-item>
       <template v-if="submitFormData.type !== 'button'">

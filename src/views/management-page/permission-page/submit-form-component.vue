@@ -43,19 +43,35 @@ const close = () => {
   emit('update:isopen', false)
   resetFields()
 }
+const options = [
+  {
+    value: '首页1',
+    label: '首页'
+  },
+  {
+    value: '关于1',
+    label: '关于'
+  },
+  {
+    value: '系统管理1',
+    label: '系统管理',
+    children: [{
+      value: '用户管理1',
+      label: '用户管理'
+    }, {
+      value: '权限管理',
+      label: '权限管理'
+    }]
+  }
+]
 </script>
 
 <template>
-  <el-drawer size="20%" :before-close="handleClose" :model-value="isopen">
+  <el-drawer size="25%" :before-close="handleClose" :model-value="isopen">
     <el-form ref="ruleFormRef" :model="submitFormData" label-width="auto" label-position="top">
-      <el-form-item label="ID" prop="name">
-        <el-input v-model="submitFormData.name" />
-      </el-form-item>
-      <el-form-item label="年龄" prop="age">
-        <el-input v-model="submitFormData.age" />
-      </el-form-item>
-      <el-form-item label="创建时间" prop="gmtCreate">
-        <el-date-picker v-model="submitFormData.gmtCreate" type="date" value-format="YYYY-MM-DD" />
+      <el-form-item label="菜单" prop="permissionList">
+        <el-cascader v-model="submitFormData.permissionList" :options="options"
+          :props="{ emitPath: false, multiple: true }" clearable />
       </el-form-item>
     </el-form>
     <template #footer>

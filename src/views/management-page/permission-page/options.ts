@@ -11,7 +11,7 @@ export const submitFormData = reactive<Record<string, unknown>>({
   name: '',
   age: '',
   action: '',
-  gmtCreate: ''
+  permissionList: ''
 })
 
 export const paginationAndSortOptions = reactive({
