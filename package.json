@@ -12,8 +12,8 @@
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
     "@vueuse/core": "^8.4.2",
-    "@wangeditor/editor": "^0.15.15",
-    "@wangeditor/editor-for-vue": "^5.1.8-11",
+    "@wangeditor/editor": "^0.15.20",
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "autoprefixer": "^10",
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
