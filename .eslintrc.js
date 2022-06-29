@@ -18,6 +18,7 @@ module.exports = {
     withDefaults: 'readonly'
   },
   rules: {
+    'vue/multi-word-component-names': ['error', { ignores: ['index'] }],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     '@typescript-eslint/no-explicit-any': ['off']
