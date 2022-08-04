@@ -10,10 +10,9 @@ const cdn = [
   'https://unpkg.com/lottie-web@5.9.1/build/player/lottie.js'
 ]
 module.exports = defineConfig({
-  lintOnSave: true,
+  // lintOnSave: true,
   transpileDependencies: true,
   productionSourceMap: false,
-  outputDir: process.env.outputDir,
   devServer: {
     proxy: {
       '/api': {
