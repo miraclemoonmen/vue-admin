@@ -4,20 +4,20 @@
     <el-button @click="dialogVisible = true" v-permission:button="permission">Dialog</el-button>
     <el-button @click="openDrawer('created')" v-permission:button="permission">add</el-button>
     <el-button @click="openDrawer()" v-permission:button="permission">see</el-button>
-    <suspense>
-      <Map />
-    </suspense>
+    <!-- <suspense> -->
+    <!-- <Map /> -->
+    <!-- </suspense> -->
+    <div style="border: 1px solid #ccc">
+      <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :defaultConfig="toolbarConfig"
+        mode="default" />
+      <Editor style="height: 500px; overflow-y: hidden;" v-model="valueHtml" :defaultConfig="editorConfig"
+        mode="default" @onCreated="handleCreated" />
+    </div>
     <el-dialog v-model="dialogVisible" title="Tips" width="30%" @open="open">
       <echarts-component class="bar" :option="option" />
     </el-dialog>
     <el-drawer size="35%" v-model="drawer" title="I am the title" destroy-on-close>
-      <form-component
-        :formOptions="formOptions"
-        :data="tmpObject"
-        :fromType="fromType"
-        ref="form"
-        label-width="auto"
-      >
+      <form-component :formOptions="formOptions" :data="tmpObject" :fromType="fromType" ref="form" label-width="auto">
         <template #upload>
           <el-button type="primary">Click to upload</el-button>
         </template>
@@ -34,9 +34,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, nextTick } from 'vue'
+import { shallowRef, ref, reactive, nextTick } from 'vue'
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import { useRoute } from 'vue-router'
-import Map from '@/components/Map.vue'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
+// import Map from '@/components/Map.vue'
 import formComponent from '@/components/form-component.vue'
 import echartsComponent from '@/components/echarts-component.vue'
 import dayjs from 'dayjs'
@@ -44,8 +46,15 @@ const {
   meta: { permission }
 } = useRoute()
 const dialogVisible = ref(false)
+const editorRef = shallowRef()
+const valueHtml = ref('<p>hello</p>')
+const toolbarConfig = {}
 const fromType = ref('created')
 const drawer = ref(false)
+const editorConfig = { placeholder: '请输入内容...' }
+const handleCreated = (editor: any) => {
+  editorRef.value = editor // 记录 editor 实例，重要！
+}
 const option = ref({})
 const open = async () => {
   await nextTick()

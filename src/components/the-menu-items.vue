@@ -1,24 +1,23 @@
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-
+import { useTabsStore } from '@/stores'
 defineProps<{
   menuList: any[]
 }>()
-const store = useStore()
+const useTabs = useTabsStore()
 const onClickMenu = (name: string, url: string) => {
-  store.dispatch('ADD_TABS', { name, url })
+  useTabs.ADD_TABS({ name, url })
 }
 </script>
 
 <template>
   <template v-for="(item, index) in menuList" :key="index">
     <el-menu-item :index="item.path" v-if="!item?.children && item.meta?.hide !== true"
-      @click="onClickMenu(item.meta.name, item.path)">
+      @click="onClickMenu(item.name, item.path)">
       <el-icon>
         <component :is="item.meta?.icon" />
       </el-icon>
       <template #title>
-        <span>{{ item.meta.name }}</span>
+        <span>{{ item.name }}</span>
       </template>
     </el-menu-item>
     <el-sub-menu :index="item.path" v-else-if="item?.children">
@@ -26,7 +25,7 @@ const onClickMenu = (name: string, url: string) => {
         <el-icon>
           <component :is="item.meta?.icon" />
         </el-icon>
-        <span>{{ item.meta.name }}</span>
+        <span>{{ item.name }}</span>
       </template>
       <the-menu-items :menuList="item?.children" />
     </el-sub-menu>

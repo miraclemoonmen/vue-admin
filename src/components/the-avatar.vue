@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
 import { show } from '@/components/the-el-loading'
 import { ElMessageBox } from 'element-plus'
-const store = useStore()
 const router = useRouter()
+const userStore = useUserStore()
 const handleCommand = (command: string) => {
   switch (command) {
     case 'signOut':
@@ -21,7 +21,7 @@ const handleCommand = (command: string) => {
 const signOut = () => {
   show('退出登录中，请稍后...')
   setTimeout(() => {
-    store.dispatch('CLEAR_TOKEN')
+    userStore.CLEAR_TOKEN()
     router.go(0)
   }, 700)
 }

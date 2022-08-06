@@ -1,15 +1,15 @@
 
 <script lang="ts" setup>
 import { ref, reactive, computed } from 'vue'
-import { useStore } from 'vuex'
-import { GlobalDataProps } from '@/store'
+import { useUserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 import formComponent from '@/components/form-component.vue'
+
 const emit = defineEmits<{(e: 'changeComponent'): void }>()
 const changeComponent = () => {
   emit('changeComponent')
 }
-const store = useStore<GlobalDataProps>()
+const userStore = useUserStore()
 const router = useRouter()
 
 const form = ref()
@@ -49,15 +49,15 @@ const formOptions = reactive([
   }
 ])
 
-const keepPassword = computed(() => store.state.user.keepPassword)
+const keepPassword = computed(() => userStore.keepPassword)
 
 const loading = ref(false)
 const getLogin = () => {
   form.value.submitForm(
     async () => {
       loading.value = true
-      await store.dispatch('SET_TOKEN')
-      router.push({ name: 'Home' })
+      await userStore.SET_TOKEN()
+      router.push({ name: '首页' })
     },
     () => {
       console.log('失败')
@@ -74,7 +74,7 @@ const getLogin = () => {
       <el-button class="w-full !h-10" @click="getLogin" type="primary" :loading="loading">登 录</el-button>
     </div>
     <div class="flex justify-between">
-      <el-checkbox @click.prevent="store.dispatch('SET_KEEPASSWORD')" :model-value="keepPassword" label="记住密码"
+      <el-checkbox @click.prevent="userStore.SET_KEEPASSWORD" :model-value="keepPassword" label="记住密码"
         size="large"></el-checkbox>
       <el-link :underline="false">忘记密码？</el-link>
     </div>

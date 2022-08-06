@@ -1,21 +1,21 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { GlobalDataProps } from '@/store'
-const store = useStore<GlobalDataProps>()
+import { useTabsStore } from '@/stores'
+
+const tabsStore = useTabsStore()
 const router = useRouter()
 const route = useRoute()
 const active = computed(() => route.fullPath)
-const data = computed(() => store.state.tabs.data)
+const data = computed(() => tabsStore.list)
 
 const clickTab = (item: { paneName: string }) => {
   router.push(item.paneName)
-  store.dispatch('SET_ACTIVE', item.paneName)
+  tabsStore.SET_ACTIVE(item.paneName)
 }
 
 const removeTab = (targetName: string) => {
-  store.dispatch('DEL_TABS', targetName)
+  tabsStore.DEL_TABS(targetName)
 }
 </script>
 

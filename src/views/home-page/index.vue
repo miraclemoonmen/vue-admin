@@ -34,7 +34,7 @@ getTableData2()
     <div class="home_midlle">
       <div class="home_midlle_left bg-white dark:bg-slate-800">
         <div class="title dark:text-slate-400">指挥中心</div>
-        <div class="home_midlle_left_content">
+        <!-- <div class="home_midlle_left_content"> -->
           <table-component :columns="columns1" :data="tableData1" v-loading="tableLoading1" @sort-change="sortChange1">
             <template #name="{ scope }">
               <el-tag>{{ scope.name }}</el-tag>
@@ -47,7 +47,7 @@ getTableData2()
               </el-button-group>
             </template>
           </table-component>
-        </div>
+        <!-- </div> -->
         <el-pagination class="el-table-pagination" v-model:currentPage="paginationAndSortOptions1.currentPage"
           v-model:page-size="paginationAndSortOptions1.pageSize" :total="tableData1?.total || 0"
           :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" @size-change="getTableData1"
@@ -55,13 +55,13 @@ getTableData2()
       </div>
       <div class="home_midlle_right bg-white dark:bg-slate-800">
         <div class="title dark:text-slate-400">指挥中心</div>
-        <div class="home_midlle_right_content">
+        <!-- <div class="home_midlle_right_content"> -->
           <table-component :columns="columns2" :data="tableData2" v-loading="tableLoading2" @sort-change="sortChange2">
             <template #name="{ scope }">
               <el-link>{{ scope.name }}</el-link>
             </template>
           </table-component>
-        </div>
+        <!-- </div> -->
         <el-pagination class="el-table-pagination" v-model:currentPage="paginationAndSortOptions2.currentPage"
           v-model:page-size="paginationAndSortOptions2.pageSize" :total="tableData2?.total || 0"
           :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" @size-change="getTableData2"

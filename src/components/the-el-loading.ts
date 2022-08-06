@@ -1,8 +1,11 @@
 import { ElLoading } from 'element-plus'
-import { isDark } from '@/hooks/isDark'
+import { computed } from 'vue'
+import { useUserStore } from '@/stores'
 
 let fullscreenLoading: any
 const show = (text = '页面初始化中，请稍后...'): void => {
+  const userStore = useUserStore()
+  const isDark = computed(() => userStore.isDark)
   fullscreenLoading = ElLoading.service({
     background: isDark.value ? 'rgb(30,41,59)' : '#fff',
     text,

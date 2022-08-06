@@ -1,5 +1,6 @@
 import { reactive } from 'vue'
 // import { getEditor } from '@wangeditor/editor-for-vue'
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
 
 export const initEditor: any = reactive({
   editorId: `w-e-${Math.random().toString().slice(-5)}`,

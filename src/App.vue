@@ -3,18 +3,12 @@
 </template>
 
 <style lang="scss">
-@media screen and (max-width: 1919px) {
-  html {
-    font-size: 13px !important;
-  }
-}
 
 html,
 body,
 #app {
   height: auto;
   min-height: 100vh;
-  font-size: 16px;
 }
 
 #app {

@@ -2,13 +2,13 @@
 import { onMounted } from 'vue'
 import lottie from 'lottie-web'
 import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useTabsStore } from '@/stores'
 const router = useRouter()
 const route = useRoute()
-const store = useStore()
+const usetabs = useTabsStore()
 const goHome = async () => {
-  store.dispatch('ADD_TABS', { name: '首页', url: '/' })
-  store.dispatch('DEL_TABS', route.fullPath)
+  usetabs.ADD_TABS({ name: '首页', url: '/' })
+  usetabs.DEL_TABS(route.fullPath)
   router.push('/')
 }
 

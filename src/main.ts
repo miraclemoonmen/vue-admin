@@ -10,7 +10,7 @@ import Toast from 'vue-toastification'
 import App from './App.vue'
 import router from './router'
 import './router/beforeEach'
-import store from './store'
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
 
@@ -33,4 +33,4 @@ app.use(ElementPlus, {
   closeOnClick: false,
   showCloseButtonOnHover: true,
   draggable: false
-}).use(store).use(router).mount('#app')
+}).use(createPinia()).use(router).mount('#app')

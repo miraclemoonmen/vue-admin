@@ -16,10 +16,9 @@ export const routerList: any = {
 export const routesMenu: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
+    name: '首页',
     component: HomePage,
     meta: {
-      name: '首页',
       icon: 'House'
     }
   }

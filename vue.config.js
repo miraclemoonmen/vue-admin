@@ -3,7 +3,6 @@ const development = process.env.NODE_ENV === 'development'
 const cdn = [
   'https://unpkg.com/vue@3.2.13/dist/vue.runtime.global.prod.js',
   'https://unpkg.com/vue-router@4.0.3/dist/vue-router.global.prod.js',
-  'https://unpkg.com/vuex@4.0.0/dist/vuex.global.prod.js',
   'https://unpkg.com/element-plus@2.1.10/dist/index.full.min.js',
   'https://cdn.jsdelivr.net/npm/echarts@5.3.1/dist/echarts.min.js',
   'https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js',
@@ -44,7 +43,6 @@ module.exports = defineConfig({
       config.externals = {
         vue: 'Vue',
         'vue-router': 'VueRouter',
-        vuex: 'Vuex',
         'element-plus': 'ElementPlus',
         echarts: 'echarts',
         '@wangeditor/editor': 'wangEditor',

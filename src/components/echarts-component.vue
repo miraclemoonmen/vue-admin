@@ -3,14 +3,18 @@ import {
   ref,
   watch,
   onMounted,
-  onBeforeUnmount
+  onBeforeUnmount,
+  computed
 } from 'vue'
 import * as echarts from 'echarts'
-import { isDark } from '@/hooks/isDark'
+import { useUserStore } from '@/stores'
+
 const props = defineProps<{
-  option: any
+  option: Record<string, unknown>
 }>()
-const emit = defineEmits<{(e: 'chartClick', params: any): void }>()
+const emit = defineEmits<{(e: 'chartClick', params: Record<string, unknown>): void }>()
+const userStore = useUserStore()
+const isDark = computed(() => userStore.isDark)
 const container = ref()
 const themeDark = {
   title: {
@@ -40,7 +44,7 @@ const themeDark = {
 }
 
 onMounted(() => {
-  let chart = echarts.init(container.value, isDark.value && themeDark)
+  let chart = isDark.value ? echarts.init(container.value, themeDark) : echarts.init(container.value)
   let chartResize = chart.resize as () => void
   const initChart = () => {
     chart.setOption(props.option)

@@ -51,7 +51,7 @@ search()
       <div class="mb-4 ml-4">
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
-      <div class="flex-auto">
+      <!-- <div class="flex-auto"> -->
         <table-component :columns="columns" row-key="id" :data="tableData" v-loading="tableLoading"
           @sort-change="sortChange">
           <template #action="{ scope }">
@@ -61,8 +61,8 @@ search()
             </el-button-group>
           </template>
         </table-component>
-      </div>
-      <el-pagination class="el-table-pagination flex-auto" v-model:currentPage="paginationAndSortOptions.currentPage"
+      <!-- </div> -->
+      <el-pagination class="el-table-pagination" v-model:currentPage="paginationAndSortOptions.currentPage"
         v-model:page-size="paginationAndSortOptions.pageSize" :total="tableData?.total || 0"
         :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" @size-change="getTableData"
         @current-change="getTableData" />

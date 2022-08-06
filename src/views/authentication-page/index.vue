@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { shallowRef, onMounted } from 'vue'
+import { shallowRef, onMounted, computed } from 'vue'
 import lottie from 'lottie-web'
 import signinPage from './signin-page.vue'
 import registerPage from './register-page.vue'
-import { isDark } from '@/hooks/isDark'
+import { useUserStore } from '@/stores'
+const userStore = useUserStore()
+const isDark = computed(() => userStore.isDark)
 const isComponent = shallowRef(signinPage)
 const changeComponent = () => {
   isComponent.value = isComponent.value === signinPage ? registerPage : signinPage

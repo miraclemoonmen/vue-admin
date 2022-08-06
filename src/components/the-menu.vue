@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import { GlobalDataProps } from '@/store'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
 import theMenuItems from './the-menu-items.vue'
+import { useMenuStore } from '@/stores'
 
 const route = useRoute()
-const store = useStore<GlobalDataProps>()
+const useMenu = useMenuStore()
 const defaultPath = computed(() => route.fullPath)
-const menuList = computed(() => store.state.menuList.data)
+const menuList = computed(() => useMenu.list)
 </script>
 
 <template>

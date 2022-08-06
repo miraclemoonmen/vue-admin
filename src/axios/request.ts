@@ -1,12 +1,11 @@
 import axios from 'axios'
 import { computed } from 'vue'
-import store, { GlobalDataProps } from '@/store'
 import { useToast } from 'vue-toastification'
+import { useUserStore } from '@/stores'
 import qs from 'qs'
-import { trim } from 'lodash'
+// import { trim } from 'lodash'
 
 const toast = useToast()
-const jwt = computed(() => (store.state as unknown as GlobalDataProps).user.token)
 
 export const instance = axios.create({
   timeout: 5000
@@ -16,21 +15,23 @@ export const instance = axios.create({
 })
 
 instance.interceptors.request.use(config => {
-  if (jwt.value) {
-    config.headers = {
-      // ContentType: 'application/x-www-form-urlencoded',
-      Authorization: `Bearer ${jwt.value}`
-    }
+  const userStore = useUserStore()
+  const jwt = computed(() => userStore.token)
+  // if (jwt.value) {
+  config.headers = {
+    // ContentType: 'application/x-www-form-urlencoded',
+    Authorization: `Bearer ${jwt.value}`
   }
+  // }
   if (config.method === 'get') {
     config.paramsSerializer = params => {
-      const tmp = { ...params }
-      Reflect.ownKeys(params).forEach(key => {
-        if (trim(params[key]).length === 0) {
-          delete tmp[key]
-        }
-      })
-      return qs.stringify(tmp, { arrayFormat: 'repeat' })
+      // const tmp = { ...params }
+      // Reflect.ownKeys(params).forEach(key => {
+      //   if (trim(params[key]).length === 0) {
+      //     delete tmp[key]
+      //   }
+      // })
+      return qs.stringify(params, { arrayFormat: 'repeat' })
     }
   }
   return config

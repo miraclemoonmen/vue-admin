@@ -6,9 +6,9 @@
   "data": [
     {
       "path": "/about",
-      "name": "AboutPage",
+      "name": "关于",
+      "component": "AboutPage",
       "meta": {
-        "name": "关于",
         "icon": "Document",
         "permission": [
           "button"
@@ -17,53 +17,53 @@
     },
     {
       "path": "/test",
-      "name": "LayoutPage1",
+      "name": "系统管理",
+      "component": "LayoutPage",
       "redirect": "/test/user",
       "meta": {
-        "name": "系统管理",
         "icon": "Setting",
         "list": true
       },
       "children": [
         {
           "path": "/test/accounts",
-          "name": "AccountsPage",
+          "component": "AccountsPage",
+          "name": "账号管理",
           "meta": {
-            "name": "账号管理",
             "icon": "User"
           }
         },
         {
           "path": "/test/permission",
-          "name": "Permission",
+          "name": "权限管理",
+          "component": "Permission",
           "meta": {
-            "name": "权限管理",
             "icon": "Unlock"
           }
         },
         {
           "path": "/test/menu",
-          "name": "Menu",
+          "name": "菜单管理",
+          "component": "Menu",
           "meta": {
-            "name": "菜单管理",
             "icon": "Menu"
           }
         },
         {
           "path": "/test/test1",
-          "name": "LayoutPage2",
+          "name": "系统管理1",
+          "component": "LayoutPage",
           "redirect": "/test/test1/accounts",
           "meta": {
-            "name": "系统管理1",
             "icon": "Setting",
             "list": true
           },
           "children": [
             {
               "path": "/test/test1/accounts",
-              "name": "AccountsPage2",
+              "component": "AccountsPage2",
+              "name": "账号管理1",
               "meta": {
-                "name": "账号管理1",
                 "icon": "User"
               }
             }

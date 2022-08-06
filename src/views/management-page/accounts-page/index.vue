@@ -41,15 +41,15 @@ search()
 </script>
 
 <template>
-  <div class="flex h-full w-full">
-    <div class="flex flex-col overflow-hidden flex-auto p-2 bg-white dark:bg-slate-800 rounded-lg">
+  <div class="flex h-full w-full overflow-hidden">
+    <div class="flex flex-col flex-auto p-2 overflow-hidden bg-white dark:bg-slate-800 rounded-lg">
       <div class="pt-2">
         <search-form-component @search="search" />
       </div>
       <div class="mb-4 ml-4">
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
-      <div class="flex-auto">
+      <!-- <div class="flex-1 overflow-hidden"> -->
         <table-component :columns="columns" :data="tableData" v-loading="tableLoading" @sort-change="sortChange">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
@@ -61,8 +61,8 @@ search()
             </el-button-group>
           </template>
         </table-component>
-      </div>
-      <el-pagination class="el-table-pagination flex-auto" v-model:currentPage="paginationAndSortOptions.currentPage"
+      <!-- </div> -->
+      <el-pagination class="el-table-pagination" v-model:currentPage="paginationAndSortOptions.currentPage"
         v-model:page-size="paginationAndSortOptions.pageSize" :total="tableData?.total || 0"
         :page-sizes="[10, 20, 50, 100]" layout="total, sizes, prev, pager, next, jumper" @size-change="getTableData"
         @current-change="getTableData" />
