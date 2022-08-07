@@ -8,6 +8,7 @@ defineProps<{
   data: ItableData | undefined,
   columns: {
     label: string,
+    type?: string,
     prop?: string,
     slot?: string,
     width?: number,
@@ -52,7 +53,7 @@ const tableOptions = {
 
 <template>
   <div ref="boxRef" class="flex-1 overflow-hidden">
-    <el-table :data="data?.list" :class="{ 'emptyView': !data?.list }" :height="height"
+    <el-table :data="data?.list" :height="height"
       :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50"
       :element-loading-background="isDark ? 'rgba(30,41,59, 0.9)' : null" v-bind="$attrs">
       <template v-for="(item, index) in columns" :key="item.id || index">

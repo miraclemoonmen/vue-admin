@@ -12,11 +12,8 @@
 
 @use "element-plus/theme-chalk/src/index.scss" as *;
 
-.emptyView {
-  .el-scrollbar__view {
-    height: 100%;
-    overflow: hidden;
-  }
+.w-e-full-screen-container {
+  z-index: 1000;
 }
 
 .el-drawer {
