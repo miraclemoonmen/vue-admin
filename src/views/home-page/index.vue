@@ -35,7 +35,7 @@ getTableData2()
       <div class="home_midlle_left bg-white dark:bg-slate-800">
         <div class="title dark:text-slate-400">指挥中心</div>
         <!-- <div class="home_midlle_left_content"> -->
-          <table-component :columns="columns1" :data="tableData1" v-loading="tableLoading1" @sort-change="sortChange1">
+          <table-component :columns="columns1" :data="tableData1" :loading="tableLoading1" @sort-change="sortChange1">
             <template #name="{ scope }">
               <el-tag>{{ scope.name }}</el-tag>
             </template>
@@ -56,7 +56,7 @@ getTableData2()
       <div class="home_midlle_right bg-white dark:bg-slate-800">
         <div class="title dark:text-slate-400">指挥中心</div>
         <!-- <div class="home_midlle_right_content"> -->
-          <table-component :columns="columns2" :data="tableData2" v-loading="tableLoading2" @sort-change="sortChange2">
+          <table-component :columns="columns2" :data="tableData2" :loading="tableLoading2" @sort-change="sortChange2">
             <template #name="{ scope }">
               <el-link>{{ scope.name }}</el-link>
             </template>

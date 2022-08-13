@@ -52,7 +52,7 @@ search()
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
       <!-- <div class="flex-auto"> -->
-        <table-component :columns="columns" row-key="id" :data="tableData" v-loading="tableLoading"
+        <table-component :columns="columns" row-key="id" :data="tableData" :loading="tableLoading"
           @sort-change="sortChange">
           <template #action="{ scope }">
             <el-button-group>

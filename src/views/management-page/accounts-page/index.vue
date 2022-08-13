@@ -50,7 +50,7 @@ search()
         <el-button icon="Plus" @click="changeDrawer('create')">创建</el-button>
       </div>
       <!-- <div class="flex-1 overflow-hidden"> -->
-        <table-component :columns="columns" :data="tableData" v-loading="tableLoading" @sort-change="sortChange">
+        <table-component :columns="columns" :data="tableData" :loading="tableLoading" @sort-change="sortChange">
           <template #state="{ scope }">
             <el-switch v-model="scope.state" disabled />
           </template>

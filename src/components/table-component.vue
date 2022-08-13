@@ -6,6 +6,7 @@ import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 defineProps<{
   url?: string,
   data: ItableData | undefined,
+  loading: boolean,
   columns: {
     label: string,
     type?: string,
@@ -53,8 +54,8 @@ const tableOptions = {
 
 <template>
   <div ref="boxRef" class="flex-1 overflow-hidden">
-    <el-table :data="data?.list" :height="height"
-      :element-loading-svg="tableOptions.svg" element-loading-svg-view-box="-10, -10, 50, 50"
+    <el-table v-loading="loading" :data="data?.list" :height="height" :element-loading-svg="tableOptions.svg"
+      element-loading-svg-view-box="-10, -10, 50, 50"
       :element-loading-background="isDark ? 'rgba(30,41,59, 0.9)' : null" v-bind="$attrs">
       <template v-for="(item, index) in columns" :key="item.id || index">
         <el-table-column v-bind="item">
