@@ -1,6 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-import HomePage from '@/views/home-page/index.vue'
 import LayoutViewAdmin from '@/views/admin-layout-page.vue'
 
 export interface routerList {
@@ -19,7 +18,7 @@ export const routesMenu: RouteRecordRaw[] = [
   {
     path: '/',
     name: '首页',
-    component: HomePage,
+    component: () => import(/* webpackChunkName: "home-page" */ '@/views/home-page/index.vue'),
     meta: {
       icon: 'House'
     }

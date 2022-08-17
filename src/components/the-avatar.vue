@@ -18,13 +18,11 @@ const handleCommand = (command: string) => {
       break
   }
 }
-const signOut = () => {
+const signOut = async () => {
   show('退出登录中，请稍后...')
-  setTimeout(async () => {
-    userStore.CLEAR_TOKEN()
-    await router.push('/authentication')
-    close()
-  }, 1000)
+  userStore.CLEAR_TOKEN()
+  await router.push('/authentication')
+  close()
 }
 </script>
 

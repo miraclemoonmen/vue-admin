@@ -3,6 +3,7 @@
 import { ref, reactive, computed } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { useRouter, useRoute } from 'vue-router'
+import { show, close } from '@/components/the-el-loading'
 import formComponent from '@/components/form-component.vue'
 
 const emit = defineEmits<{(e: 'changeComponent'): void }>()
@@ -56,13 +57,15 @@ const loading = ref(false)
 const getLogin = () => {
   form.value.submitForm(
     async () => {
+      show()
       loading.value = true
       await userStore.SET_TOKEN()
       if (route.query.redirect) {
-        router.push(route.query.redirect as string)
+        await router.push(route.query.redirect as string)
       } else {
-        router.push({ name: '首页' })
+        await router.push({ name: '首页' })
       }
+      close()
     },
     () => {
       console.log('失败')
