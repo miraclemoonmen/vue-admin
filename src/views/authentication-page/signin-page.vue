@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import { ref, reactive, computed } from 'vue'
 import { useUserStore } from '@/stores/user'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import formComponent from '@/components/form-component.vue'
 
 const emit = defineEmits<{(e: 'changeComponent'): void }>()
@@ -11,6 +11,7 @@ const changeComponent = () => {
 }
 const userStore = useUserStore()
 const router = useRouter()
+const route = useRoute()
 
 const form = ref()
 const formOptions = reactive([
@@ -57,7 +58,11 @@ const getLogin = () => {
     async () => {
       loading.value = true
       await userStore.SET_TOKEN()
-      router.push({ name: '首页' })
+      if (route.query.redirect) {
+        router.push(route.query.redirect as string)
+      } else {
+        router.push({ name: '首页' })
+      }
     },
     () => {
       console.log('失败')
@@ -74,8 +79,8 @@ const getLogin = () => {
       <el-button class="w-full !h-10" @click="getLogin" type="primary" :loading="loading">登 录</el-button>
     </div>
     <div class="flex justify-between">
-      <el-checkbox @click.prevent="userStore.SET_KEEPASSWORD" :model-value="keepPassword" label="记住密码"
-        size="large"></el-checkbox>
+      <el-checkbox @click.prevent="userStore.SET_KEEPASSWORD" :model-value="keepPassword" label="记住密码" size="large">
+      </el-checkbox>
       <el-link :underline="false">忘记密码？</el-link>
     </div>
     <p class="flex text-xs mt-4 text-slate-600 dark:text-slate-400">

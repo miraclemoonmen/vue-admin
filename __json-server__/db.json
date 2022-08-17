@@ -7,7 +7,7 @@
     {
       "path": "/about",
       "name": "关于",
-      "component": "AboutPage",
+      "filepath": "/about-page.vue",
       "meta": {
         "icon": "Document",
         "permission": [
@@ -18,23 +18,23 @@
     {
       "path": "/test",
       "name": "系统管理",
-      "component": "LayoutPage",
+      "filepath": "/layout-page.vue",
       "redirect": "/test/user",
       "meta": {
-        "icon": "Setting",
-        "list": true
+        "icon": "Setting"
       },
       "children": [
         {
-          "path": "/test/accounts",
-          "component": "AccountsPage",
+          "path": "accounts",
+          "filepath": "/management-page/accounts-page/index.vue",
           "name": "账号管理",
           "meta": {
             "icon": "User"
           }
         },
         {
-          "path": "/test/permission",
+          "path": "permission",
+          "filepath": "/management-page/permission-page/index.vue",
           "name": "权限管理",
           "component": "Permission",
           "meta": {
@@ -42,26 +42,25 @@
           }
         },
         {
-          "path": "/test/menu",
+          "path": "menu",
           "name": "菜单管理",
-          "component": "Menu",
+          "filepath": "/management-page/menu-page/index.vue",
           "meta": {
             "icon": "Menu"
           }
         },
         {
-          "path": "/test/test1",
+          "path": "test1",
           "name": "系统管理1",
-          "component": "LayoutPage",
+          "filepath": "/layout-page.vue",
           "redirect": "/test/test1/accounts",
           "meta": {
-            "icon": "Setting",
-            "list": true
+            "icon": "Setting"
           },
           "children": [
             {
-              "path": "/test/test1/accounts",
-              "component": "AccountsPage2",
+              "path": "accounts",
+              "filepath": "/management-page/accounts-page/index.vue",
               "name": "账号管理1",
               "meta": {
                 "icon": "User"

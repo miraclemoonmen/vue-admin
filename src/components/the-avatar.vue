@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { show } from '@/components/the-el-loading'
+import { show, close } from '@/components/the-el-loading'
 import { ElMessageBox } from 'element-plus'
 const router = useRouter()
 const userStore = useUserStore()
@@ -20,10 +20,11 @@ const handleCommand = (command: string) => {
 }
 const signOut = () => {
   show('退出登录中，请稍后...')
-  setTimeout(() => {
+  setTimeout(async () => {
     userStore.CLEAR_TOKEN()
-    router.go(0)
-  }, 700)
+    await router.push('/authentication')
+    close()
+  }, 1000)
 }
 </script>
 

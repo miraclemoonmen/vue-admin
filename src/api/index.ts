@@ -1,5 +1,5 @@
 import { instance } from '@/axios/request'
-import { RouteRecordRaw } from 'vue-router'
+import type { routerList } from '@/router/list'
 
 export const getShibes = () => instance.get('/api/shibes')
 
@@ -9,6 +9,6 @@ export const getList = (): Promise<any> => instance.get('https://www.fastmock.si
 
 export const getTree = (): Promise<any> => instance.get('https://www.fastmock.site/mock/9610740db4aff3d4fa9b3f816a2ced43/mock/getTree')
 
-export const getRouter = (): Promise<RouteRecordRaw[]> => instance.get('/jsonServer/data')
+export const getRouter = (): Promise<routerList[]> => instance.get('/jsonServer/data')
 
 export const login = (): Promise<any> => instance.get('/jsonServer/user')

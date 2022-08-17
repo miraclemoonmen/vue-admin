@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-import { useTabsStore } from '@/stores'
+import { useRouter } from 'vue-router'
+import type { routerList } from '@/router/list'
 defineProps<{
-  menuList: any[]
+  menuList: routerList[]
 }>()
-const useTabs = useTabsStore()
-const onClickMenu = (name: string, url: string) => {
-  useTabs.ADD_TABS({ name, url })
+const router = useRouter()
+const onClickMenu = (name: string) => {
+  router.push({ name })
 }
 </script>
 
 <template>
   <template v-for="(item, index) in menuList" :key="index">
-    <el-menu-item :index="item.path" v-if="!item?.children && item.meta?.hide !== true"
-      @click="onClickMenu(item.name, item.path)">
+    <el-menu-item :index="item.name" v-if="!item?.children && item.meta?.hide !== true"
+      @click="onClickMenu(item.name)">
       <el-icon>
         <component :is="item.meta?.icon" />
       </el-icon>

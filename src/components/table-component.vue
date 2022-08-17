@@ -3,7 +3,7 @@
 import type { ItableData } from '@/hooks/useTable'
 import { useUserStore } from '@/stores'
 import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
-defineProps<{
+withDefaults(defineProps<{
   url?: string,
   data: ItableData | undefined,
   loading: boolean,
@@ -16,7 +16,9 @@ defineProps<{
     align?: string,
     fixed?: string
   }[]
-}>()
+}>(), {
+  loading: true
+})
 
 const userStore = useUserStore()
 const isDark = computed(() => userStore.isDark)

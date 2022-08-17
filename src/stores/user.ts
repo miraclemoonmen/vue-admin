@@ -16,6 +16,7 @@ export const useUserStore = defineStore('user', {
       window.localStorage.setItem('token', token)
     },
     CLEAR_TOKEN () {
+      this.token = null
       window.localStorage.removeItem('token')
     },
     SET_KEEPASSWORD () {

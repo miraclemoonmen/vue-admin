@@ -2,18 +2,20 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import HomePage from '@/views/home-page/index.vue'
 import LayoutViewAdmin from '@/views/admin-layout-page.vue'
-import LayoutPage from '@/views/layout-page.vue'
 
-export const routerList: any = {
-  LayoutPage,
-  AboutPage: () => import(/* webpackChunkName: "about-page" */ '@/views/about-page.vue'),
-  AccountsPage: () => import(/* webpackChunkName: "accounts-page/" */ '@/views/management-page/accounts-page/index.vue'),
-  AccountsPage2: () => import(/* webpackChunkName: "accounts-page/" */ '@/views/management-page/accounts-page/index.vue'),
-  Permission: () => import(/* webpackChunkName: "permission-page/" */ '@/views/management-page/permission-page/index.vue'),
-  Menu: () => import(/* webpackChunkName: "menu-page/" */ '@/views/management-page/menu-page/index.vue')
+export interface routerList {
+  path: string,
+  name: string,
+  filepath: string,
+  redirect: string,
+  meta: {
+    icon: string,
+    hide?: boolean,
+  },
+  children?: routerList[]
 }
 
-export const routesMenu: Array<RouteRecordRaw> = [
+export const routesMenu: RouteRecordRaw[] = [
   {
     path: '/',
     name: '首页',
@@ -24,7 +26,7 @@ export const routesMenu: Array<RouteRecordRaw> = [
   }
 ]
 
-export const routes: Array<RouteRecordRaw> = [
+export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'LayoutViewAdmin',
@@ -44,8 +46,5 @@ export const routes: Array<RouteRecordRaw> = [
 export const notdefined: RouteRecordRaw = {
   path: '/:catchAll(.*)',
   name: '404',
-  component: () => import(/* webpackChunkName: "404-page" */ '@/views/404-page.vue'),
-  meta: {
-    name: 'not found'
-  }
+  component: () => import(/* webpackChunkName: "404-page" */ '@/views/404-page.vue')
 }

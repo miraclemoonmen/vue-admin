@@ -1,27 +1,31 @@
 import { defineStore } from 'pinia'
 import router from '../router'
 
+interface listItem {
+  name: string,
+  url: string
+}
+
 export const useTabsStore = defineStore('tabs', {
   state: () => ({
-    list: [] as any,
+    list: [] as listItem[],
     active: ''
   }),
   actions: {
-    SET_TABS (data: any) {
+    SET_TABS (data: listItem[]) {
       this.list = data
     },
-    ADD_TABS ({ name, url }: { name: unknown, url: string }) {
+    ADD_TABS ({ name, url }: listItem) {
       this.active = url
-      if (this.list.some((item: { url: any }) => item.url === url)) return true
+      if (this.list.some(item => item.url === url)) return true
       this.list.push({
         name,
         url
       })
     },
-    DEL_TABS (targetName: any) {
-      if (this.list.length === 1) return true
+    DEL_TABS (targetName: string) {
       if (this.active === targetName) {
-        this.list.forEach((item: { url: any }, index: number) => {
+        this.list.forEach((item, index: number) => {
           if (item.url === targetName) {
             const nextTab = this.list[index + 1] || this.list[index - 1]
             if (nextTab) {
@@ -31,10 +35,10 @@ export const useTabsStore = defineStore('tabs', {
           }
         })
       }
-      this.list = this.list.filter((item: { url: any }) => item.url !== targetName)
+      this.list = this.list.filter(item => item.url !== targetName)
     },
-    SET_ACTIVE (data: string) {
-      this.active = data
+    SET_ACTIVE (targetName: string) {
+      this.active = targetName
     }
   }
 })

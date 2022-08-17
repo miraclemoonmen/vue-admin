@@ -6,12 +6,12 @@ import { useMenuStore } from '@/stores'
 
 const route = useRoute()
 const useMenu = useMenuStore()
-const defaultPath = computed(() => route.fullPath)
+const defaultPath = computed(() => route.name)
 const menuList = computed(() => useMenu.list)
 </script>
 
 <template>
-  <el-menu :default-active="defaultPath" router>
+  <el-menu :default-active="defaultPath">
     <li class="logo"></li>
     <the-menu-items :menuList="menuList" />
   </el-menu>

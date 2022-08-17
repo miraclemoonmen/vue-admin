@@ -15,6 +15,7 @@ const clickTab = (item: { paneName: string }) => {
 }
 
 const removeTab = (targetName: string) => {
+  if (data.value.length === 1) return true
   tabsStore.DEL_TABS(targetName)
 }
 </script>

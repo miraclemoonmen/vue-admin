@@ -5,11 +5,10 @@ import { useRouter, useRoute } from 'vue-router'
 import { useTabsStore } from '@/stores'
 const router = useRouter()
 const route = useRoute()
-const usetabs = useTabsStore()
+const tabsStore = useTabsStore()
 const goHome = async () => {
-  usetabs.ADD_TABS({ name: '首页', url: '/' })
-  usetabs.DEL_TABS(route.fullPath)
   router.push('/')
+  tabsStore.DEL_TABS(route.path)
 }
 
 onMounted(() => {
